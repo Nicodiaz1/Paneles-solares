@@ -1,6 +1,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Solar Glow</title>
+<title>Solar Glow · Energía solar en Río Tercero, Córdoba</title>
+<meta name="description" content="Paneles solares, inversores, baterías de litio y energía portátil EcoFlow para campos, casas, oficinas y edificios. Río Tercero, Córdoba. Envíos a toda la Argentina.">
+<link rel="icon" href="fotos/marca/icono.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,75..125,300..900;1,75..125,400&family=JetBrains+Mono:wght@400;500;700&display=swap">
@@ -17,8 +19,10 @@
   --noche-2:#111926;
   --vidrio:#16202E;
   --vidrio-2:#1E2B3D;
-  --sol:#FFB43D;
-  --brasa:#FF6B2C;
+  /* verde del logo de Solar Glow. --sol/--brasa conservan el nombre histórico:
+     son los acentos de la interfaz (sobre oscuro / sobre claro) */
+  --sol:#5CF01E;
+  --brasa:#237A0C;
   --acero:#E6E9EC;
   --acero-2:#D6DBE1;
   --acero-3:#C3CAD3;
@@ -82,13 +86,13 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   background:rgba(11,15,22,.82);
   backdrop-filter:saturate(140%) blur(14px);
   -webkit-backdrop-filter:saturate(140%) blur(14px);
-  border-bottom-color:rgba(255,180,61,.16);
+  border-bottom-color:rgba(92,240,30,.16);
 }
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
 .brand-mark{
   width:19px;height:19px;border-radius:50%;flex:none;
   background:radial-gradient(circle at 34% 30%,#FFE9BF,var(--sol) 46%,var(--brasa));
-  box-shadow:0 0 0 1px rgba(255,180,61,.35),0 0 22px rgba(255,140,45,.55);
+  box-shadow:0 0 0 1px rgba(92,240,30,.35),0 0 22px rgba(70,200,20,.55);
 }
 .brand-name{
   font-family:var(--f-mono);font-size:13px;font-weight:700;
@@ -101,7 +105,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   transition:color .2s;
 }
 .nav-links a:hover{color:var(--acero)}
-@media (max-width:860px){.nav-links{display:none}}
+@media (max-width:1000px){.nav-links{display:none}}
 @media (max-width:520px){
   .nav{padding:12px 16px}
   .nav .btn{padding:11px 13px;font-size:10px;letter-spacing:.07em}
@@ -120,10 +124,10 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 }
 .btn:active{transform:translateY(1px)}
 .btn-sol{
-  background:var(--sol);color:#160D00;font-weight:700;
-  box-shadow:0 0 0 rgba(255,140,45,0);
+  background:var(--sol);color:#061404;font-weight:700;
+  box-shadow:0 0 0 rgba(70,200,20,0);
 }
-.btn-sol:hover{background:#FFC15E;box-shadow:0 6px 30px -6px rgba(255,140,45,.65)}
+.btn-sol:hover{background:#8DFA5C;box-shadow:0 6px 30px -6px rgba(70,200,20,.65)}
 .btn-ghost{border:1px solid rgba(230,233,236,.26);color:var(--acero)}
 .btn-ghost:hover{border-color:var(--sol);color:var(--sol)}
 .btn-ink{border:1px solid rgba(11,15,22,.28);color:var(--tinta)}
@@ -256,10 +260,10 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 }
 .quick-go{
   flex:none;width:46px;height:46px;margin-bottom:4px;border-radius:2px;
-  background:var(--sol);color:#160D00;display:grid;place-items:center;
+  background:var(--sol);color:#061404;display:grid;place-items:center;
   transition:background .2s;
 }
-.quick-go:hover{background:#FFC873}
+.quick-go:hover{background:#8DFA5C}
 .quick-go svg{width:18px;height:18px;transition:transform .22s cubic-bezier(.2,.85,.25,1)}
 .quick-go:hover svg{transform:translateX(3px)}
 
@@ -339,7 +343,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 }
 .step-btn::before{
   content:"";position:absolute;inset:0 -14px;z-index:-1;
-  background:linear-gradient(90deg,rgba(255,180,61,.20),rgba(255,180,61,0) 72%);
+  background:linear-gradient(90deg,rgba(92,240,30,.20),rgba(92,240,30,0) 72%);
   transform:scaleX(0);transform-origin:left;
   transition:transform .5s cubic-bezier(.2,.85,.25,1);
 }
@@ -423,13 +427,13 @@ input[type=range]::-webkit-slider-runnable-track{height:2px;background:rgba(230,
 input[type=range]::-moz-range-track{height:2px;background:rgba(230,233,236,.2);border-radius:2px}
 input[type=range]::-webkit-slider-thumb{
   -webkit-appearance:none;width:16px;height:16px;border-radius:50%;margin-top:-7px;
-  background:var(--sol);box-shadow:0 0 0 5px rgba(255,180,61,.16),0 0 18px rgba(255,140,45,.5);
+  background:var(--sol);box-shadow:0 0 0 5px rgba(92,240,30,.16),0 0 18px rgba(70,200,20,.5);
   transition:box-shadow .2s;
 }
-input[type=range]:hover::-webkit-slider-thumb{box-shadow:0 0 0 8px rgba(255,180,61,.2),0 0 24px rgba(255,140,45,.7)}
+input[type=range]:hover::-webkit-slider-thumb{box-shadow:0 0 0 8px rgba(92,240,30,.2),0 0 24px rgba(70,200,20,.7)}
 input[type=range]::-moz-range-thumb{
   width:16px;height:16px;border:0;border-radius:50%;
-  background:var(--sol);box-shadow:0 0 0 5px rgba(255,180,61,.16);
+  background:var(--sol);box-shadow:0 0 0 5px rgba(92,240,30,.16);
 }
 .ctrl-scale{display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:10px;color:#5A6675;letter-spacing:.08em;margin-top:2px}
 
@@ -439,15 +443,15 @@ input[type=range]::-moz-range-thumb{
   font-family:var(--f-mono);font-size:11px;letter-spacing:.07em;text-transform:uppercase;
   color:var(--gris-noche);transition:all .2s;
 }
-.seg button:hover{border-color:rgba(255,180,61,.5);color:var(--acero)}
-.seg button[aria-pressed=true]{background:var(--sol);border-color:var(--sol);color:#160D00;font-weight:700}
+.seg button:hover{border-color:rgba(92,240,30,.5);color:var(--acero)}
+.seg button[aria-pressed=true]{background:var(--sol);border-color:var(--sol);color:#061404;font-weight:700}
 
 /* panel de resultados = instrumento */
 .sim-out{
   padding:clamp(26px,4vw,44px) clamp(24px,4vw,54px);
   border-left:1px solid rgba(230,233,236,.11);
   background:
-    linear-gradient(180deg,rgba(255,180,61,.05),transparent 40%),
+    linear-gradient(180deg,rgba(92,240,30,.05),transparent 40%),
     repeating-linear-gradient(0deg,transparent 0 27px,rgba(230,233,236,.028) 27px 28px);
   display:flex;flex-direction:column;gap:26px;
 }
@@ -501,44 +505,97 @@ input[type=range]::-moz-range-thumb{
 .roof-mas{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;
   color:var(--gris-noche);text-align:center;margin:-4px 0 6px}
 
-/* ─────────────────── INSTALACIONES ─────────────────── */
+/* ─────────────────── OBRAS: CARRETE ─────────────────── */
 
-.gal{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
-.shot{
-  position:relative;overflow:hidden;border-radius:3px;
-  background:linear-gradient(155deg,#1B2839,#0E1621);
-  isolation:isolate;
+.reel{--rh:clamp(250px,34vw,440px);position:relative}
+.reel-view{
+  overflow:hidden;touch-action:pan-y;cursor:grab;user-select:none;-webkit-user-select:none;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 var(--pad),#000 calc(100% - var(--pad)),transparent 100%);
+          mask-image:linear-gradient(90deg,transparent 0,#000 var(--pad),#000 calc(100% - var(--pad)),transparent 100%);
 }
-.shot::before{ /* textura de paneles mientras no hay foto real */
-  content:"";position:absolute;inset:0;opacity:.5;
-  background:
-    repeating-linear-gradient(90deg,transparent 0 8.6%,rgba(170,200,235,.13) 8.6% 9.2%),
-    repeating-linear-gradient(0deg,transparent 0 14%,rgba(170,200,235,.13) 14% 14.7%),
-    radial-gradient(130% 100% at 12% 0%,rgba(255,180,61,.24),transparent 58%);
-  transform:rotate(-7deg) scale(1.35);
-  transition:transform .8s cubic-bezier(.2,.85,.25,1);
+.reel-view.drag{cursor:grabbing}
+.reel-track{display:flex;gap:12px;width:max-content;will-change:transform}
+.reel-item{
+  flex:none;position:relative;height:var(--rh);aspect-ratio:var(--ar);
+  overflow:hidden;border-radius:3px;background:#1B2839;cursor:zoom-in;padding:0;
 }
-.shot:hover::before{transform:rotate(-7deg) scale(1.45)}
-.shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.shot-cap{
-  position:absolute;inset:auto 0 0 0;z-index:2;
-  padding:38px 18px 16px;
-  background:linear-gradient(0deg,rgba(11,15,22,.92),transparent);
-  display:flex;flex-direction:column;gap:4px;
-  transition:transform .4s cubic-bezier(.2,.85,.25,1);
+.reel-item img{
+  display:block;width:100%;height:100%;object-fit:cover;-webkit-user-drag:none;
+  transition:transform .9s cubic-bezier(.2,.85,.25,1);
 }
-.shot:hover .shot-cap,.shot:focus-within .shot-cap{transform:translateY(-4px)}
-.shot-place{font-variation-settings:"wdth" 112,"wght" 600;font-size:16px;color:var(--acero);line-height:1.2}
-.shot-spec{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--sol)}
-.g-a{grid-column:span 4;aspect-ratio:16/10}
-.g-b{grid-column:span 2;aspect-ratio:4/5}
-.g-c{grid-column:span 2;aspect-ratio:1/1}
-.g-d{grid-column:span 2;aspect-ratio:1/1}
-.g-e{grid-column:span 2;aspect-ratio:1/1}
-@media (max-width:820px){
-  .gal{grid-template-columns:repeat(2,1fr)}
-  .g-a{grid-column:span 2;aspect-ratio:16/10}
-  .g-b,.g-c,.g-d,.g-e{grid-column:span 1;aspect-ratio:1/1}
+.reel-item:hover img{transform:scale(1.045)}
+.reel-item:focus-visible{outline-offset:-4px}
+.reel-cap{
+  position:absolute;inset:auto 0 0 0;display:flex;flex-direction:column;gap:3px;
+  padding:46px 14px 13px;text-align:left;pointer-events:none;
+  background:linear-gradient(0deg,rgba(11,15,22,.88),transparent);
+  opacity:0;transform:translateY(8px);transition:opacity .3s,transform .4s cubic-bezier(.2,.85,.25,1);
+}
+.reel-item:hover .reel-cap,.reel-item:focus-visible .reel-cap{opacity:1;transform:none}
+@media (hover:none){.reel-cap{opacity:1;transform:none}}
+.reel-k{font-family:var(--f-mono);font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--sol)}
+.reel-t{font-size:14.5px;line-height:1.25;color:var(--acero);font-variation-settings:"wdth" 108,"wght" 600}
+
+.reel-arrow{
+  position:absolute;top:calc(var(--rh) / 2);translate:0 -50%;z-index:3;
+  width:54px;height:54px;border-radius:50%;display:grid;place-items:center;
+  background:rgba(11,15,22,.82);color:var(--acero);
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  box-shadow:0 12px 30px -12px rgba(0,0,0,.6);transition:background .2s,color .2s,scale .2s;
+}
+.reel-arrow:hover{background:var(--sol);color:#061404}
+.reel-arrow:active{scale:.94}
+.reel-arrow.prev{left:clamp(12px,3vw,40px)}
+.reel-arrow.next{right:clamp(12px,3vw,40px)}
+.reel-arrow svg{width:20px;height:20px}
+@media (max-width:520px){.reel-arrow{width:44px;height:44px}}
+
+.reel-bar{
+  display:flex;justify-content:space-between;align-items:center;gap:16px;margin-top:16px;
+  font-family:var(--f-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gris);
+}
+.reel-hint{display:flex;align-items:center;gap:9px}
+.reel-hint::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--acero-3);transition:background .3s,box-shadow .3s}
+.reel-hint.on::before{background:var(--brasa);box-shadow:0 0 0 4px rgba(35,122,12,.16)}
+.reel-n{color:var(--tinta);font-weight:700;font-variant-numeric:tabular-nums}
+
+/* ── visor de fotos ── */
+.lb{
+  position:fixed;inset:0;width:100%;height:100%;max-width:none;max-height:none;
+  margin:0;padding:0;border:0;overflow:hidden;
+  background:rgba(6,9,13,.96);color:var(--acero);
+}
+.lb[open]{display:grid;grid-template-rows:auto minmax(0,1fr) auto;animation:lb-in .28s ease}
+.lb::backdrop{background:transparent}
+@keyframes lb-in{from{opacity:0}to{opacity:1}}
+@media (prefers-reduced-motion:reduce){.lb[open]{animation:none}}
+.lb-top{display:flex;justify-content:space-between;align-items:center;padding:14px var(--pad)}
+.lb-n{font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;color:var(--gris-noche);font-variant-numeric:tabular-nums}
+.lb-x{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;color:var(--gris-noche);transition:background .2s,color .2s}
+.lb-x:hover{background:rgba(230,233,236,.1);color:var(--acero)}
+.lb-stage{
+  position:relative;display:flex;align-items:center;justify-content:center;min-height:0;
+  padding:0 clamp(16px,9vw,120px);touch-action:pan-y;
+}
+.lb-img{
+  max-width:100%;max-height:100%;object-fit:contain;border-radius:2px;
+  -webkit-user-drag:none;user-select:none;box-shadow:0 30px 80px -30px #000;
+}
+.lb-arrow{
+  position:absolute;top:50%;translate:0 -50%;width:56px;height:56px;border-radius:50%;
+  display:grid;place-items:center;border:1px solid rgba(230,233,236,.18);
+  background:rgba(11,15,22,.6);color:var(--acero);transition:background .2s,color .2s,border-color .2s;
+}
+.lb-arrow:hover{background:var(--sol);border-color:var(--sol);color:#061404}
+.lb-arrow.prev{left:clamp(8px,2.5vw,32px)}
+.lb-arrow.next{right:clamp(8px,2.5vw,32px)}
+.lb-arrow svg{width:20px;height:20px}
+.lb-cap{display:flex;flex-direction:column;align-items:center;gap:5px;padding:16px var(--pad) 24px;text-align:center}
+.lb-k{font-family:var(--f-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--sol)}
+.lb-t{font-size:16px;color:#C3CCD6}
+@media (max-width:600px){
+  .lb-stage{padding:0}
+  .lb-arrow{top:auto;bottom:12px;translate:none;width:46px;height:46px}
 }
 
 /* ── servicios ── */
@@ -554,7 +611,7 @@ input[type=range]::-moz-range-thumb{
 .close{
   position:relative;overflow:hidden;
   background:
-    radial-gradient(90% 130% at 50% 118%,rgba(255,140,45,.24),transparent 62%),
+    radial-gradient(90% 130% at 50% 118%,rgba(70,200,20,.24),transparent 62%),
     linear-gradient(180deg,#080C12,var(--noche));
   padding:clamp(84px,12vw,140px) 0;
 }
@@ -611,8 +668,8 @@ input[type=range]::-moz-range-thumb{
   padding:16px 18px;border:1px solid rgba(230,233,236,.16);border-radius:3px;
   transition:all .18s;font-size:16px;
 }
-.wz-opt:hover{border-color:var(--sol);background:rgba(255,180,61,.07)}
-.wz-opt[aria-pressed=true]{border-color:var(--sol);background:rgba(255,180,61,.12)}
+.wz-opt:hover{border-color:var(--sol);background:rgba(92,240,30,.07)}
+.wz-opt[aria-pressed=true]{border-color:var(--sol);background:rgba(92,240,30,.12)}
 .wz-opt i{
   font-family:var(--f-mono);font-style:normal;font-size:10.5px;color:var(--gris-noche);
   border:1px solid rgba(230,233,236,.2);border-radius:2px;width:22px;height:22px;
@@ -660,6 +717,83 @@ input[type=range]::-moz-range-thumb{
 .rv{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.85,.25,1)}
 .rv.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
+
+/* ─────────────────── MÓVIL: carros y casillas ─────────────────── */
+.movil{background:linear-gradient(180deg,var(--noche-2),var(--noche));padding:clamp(76px,11vw,140px) 0}
+.movil-grid{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:clamp(32px,5vw,72px);align-items:center}
+@media (max-width:900px){.movil-grid{grid-template-columns:1fr}}
+.movil .tag{color:var(--gris-noche)}
+.movil h2{font-size:clamp(30px,4.6vw,54px);margin:18px 0 16px;max-width:16ch}
+.movil-lead{color:#AFBAC7;max-width:48ch}
+.foto{margin:0;position:relative;border-radius:4px;overflow:hidden;background:#1B2839}
+.foto img{display:block;width:100%;height:100%;object-fit:cover}
+.foto figcaption{
+  position:absolute;left:12px;bottom:12px;padding:5px 9px;border-radius:2px;
+  background:rgba(11,15,22,.78);font-family:var(--f-mono);font-size:10px;
+  letter-spacing:.13em;text-transform:uppercase;color:var(--sol);
+}
+.movil .foto{aspect-ratio:5/4}
+.kits{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:1px;
+  margin:30px 0 28px;background:rgba(230,233,236,.12);border:1px solid rgba(230,233,236,.12);
+}
+.kit{background:var(--noche);padding:20px 18px}
+.kit-k{display:block;margin-bottom:10px;font-family:var(--f-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--sol)}
+.kit h3{font-size:18px;font-variation-settings:"wdth" 110,"wght" 650;letter-spacing:-.01em;margin-bottom:8px}
+.kit p,.kit li{font-size:14px;line-height:1.5;color:var(--gris-noche)}
+.kit ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:5px}
+.kit li::before{content:"— ";color:rgba(92,240,30,.6)}
+
+/* ─────────────────── ECOFLOW + MARCAS ─────────────────── */
+.eco-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(32px,5vw,80px);align-items:center}
+@media (max-width:900px){.eco-grid{grid-template-columns:1fr}}
+.eco h2{font-size:clamp(30px,4.6vw,54px);margin:18px 0 16px;max-width:18ch}
+.eco-lead{color:var(--gris);max-width:50ch}
+.eco-lines{margin:30px 0;border-top:1px solid var(--acero-3)}
+.eco-lines > div{display:grid;grid-template-columns:170px 1fr;gap:16px;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--acero-3)}
+@media (max-width:520px){.eco-lines > div{grid-template-columns:1fr;gap:3px}}
+.eco-lines dt{font-family:var(--f-mono);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.eco-lines dd{margin:0;font-size:15.5px;color:var(--gris)}
+.eco-act{display:flex;flex-wrap:wrap;gap:12px}
+.btn-dark{background:var(--tinta);color:var(--acero)}
+.btn-dark:hover{color:var(--sol)}
+.eco .foto{aspect-ratio:4/5;background:var(--acero-3)}
+@media (max-width:900px){.eco .foto{aspect-ratio:4/3}}
+
+.marcas{margin-top:clamp(60px,8vw,96px)}
+.marcas-list{list-style:none;margin:22px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,1fr)}
+.marcas-list li{display:flex;flex-direction:column;gap:6px;padding:22px 20px 22px 0;border-bottom:1px solid var(--acero-3)}
+.marcas-list li + li{padding-left:20px;border-left:1px solid var(--acero-3)}
+@media (max-width:820px){
+  .marcas-list{grid-template-columns:repeat(2,1fr)}
+  .marcas-list li:nth-child(odd){padding-left:0;border-left:0}
+}
+.marcas-list b{font-size:clamp(22px,2.6vw,30px);font-variation-settings:"wdth" 120,"wght" 800;letter-spacing:-.02em;line-height:1}
+.marcas-list span{font-size:14px;color:var(--gris);line-height:1.45}
+
+/* ─────────────────── DÓNDE ESTAMOS ─────────────────── */
+.donde{
+  display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(28px,5vw,72px);align-items:center;
+  margin-top:clamp(56px,8vw,96px);padding-top:clamp(40px,5vw,60px);border-top:1px solid rgba(230,233,236,.12);
+}
+@media (max-width:820px){.donde{grid-template-columns:1fr}}
+.donde .foto{aspect-ratio:1/1}
+.donde .foto img{object-position:50% 58%}
+.donde-dl{margin:0;display:grid;grid-template-columns:1fr 1fr;gap:0 32px}
+@media (max-width:520px){.donde-dl{grid-template-columns:1fr}}
+.donde-dl > div{padding:18px 0;border-bottom:1px solid rgba(230,233,236,.1)}
+.donde-dl dt{font-family:var(--f-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--gris-noche);margin-bottom:6px}
+.donde-dl dd{margin:0;font-size:17px;line-height:1.35;color:var(--acero)}
+.donde-dl a{color:var(--sol);text-decoration:none;border-bottom:1px solid rgba(92,240,30,.35);transition:border-color .2s}
+.donde-dl a:hover{border-color:var(--sol)}
+
+/* ── marca real ── */
+.brand-mark{
+  width:24px;height:24px;border-radius:0;box-shadow:none;
+  background:url("fotos/marca/icono.png") center/contain no-repeat;
+}
+@media (max-width:520px){.brand-mark{width:19px;height:19px}}
+.foot-logo{display:block;width:220px;height:auto}
 </style>
 
 <!-- ══════════════════════════ NAV ══════════════════════════ -->
@@ -669,10 +803,11 @@ input[type=range]::-moz-range-thumb{
     <span class="brand-name">Solar&nbsp;Glow</span>
   </a>
   <div class="nav-links">
-    <a href="#recorrido">Cómo funciona</a>
     <a href="#simulador">Tu ahorro</a>
-    <a href="#obras">Instalaciones</a>
+    <a href="#obras">Obras</a>
     <a href="#servicios">Servicios</a>
+    <a href="#productos">EcoFlow</a>
+    <a href="#contacto">Contacto</a>
   </div>
   <button class="btn btn-sol" data-open-wz>Pedir propuesta</button>
 </nav>
@@ -689,8 +824,8 @@ input[type=range]::-moz-range-thumb{
     <div class="hero-grid">
       <h1>Tu techo ya recibe el sol.<span class="dim">Que empiece a pagarte.</span></h1>
       <p class="hero-sub">
-        Diseñamos, instalamos y ponemos en marcha sistemas fotovoltaicos para casas, comercios y campos.
-        Cada instalación es distinta: primero entendemos tu consumo, después cotizamos.
+        Paneles solares, inversores y baterías para campos, casas, oficinas y edificios.
+        Desde Río Tercero, Córdoba: primero entendemos tu consumo, después cotizamos.
       </p>
 
       <form class="quick" id="quick" novalidate>
@@ -717,16 +852,16 @@ input[type=range]::-moz-range-thumb{
           <small id="hint">movés el mouse sobre los paneles</small>
         </div>
         <div>
-          <dt>Cobertura</dt>
-          <dd>Santa Fe · Córdoba · Buenos Aires · Entre Ríos</dd>
+          <dt>Desde</dt>
+          <dd>Río Tercero, Córdoba</dd>
         </div>
         <div>
-          <dt>Conexión a red</dt>
-          <dd>Trámite Ley 27.424 y medidor bidireccional</dd>
+          <dt>Instalamos en</dt>
+          <dd>Córdoba · Buenos Aires · Santiago del Estero</dd>
         </div>
         <div>
-          <dt>Respaldo</dt>
-          <dd>25 años de rendimiento · Proyecto firmado por matriculado</dd>
+          <dt>Envíos</dt>
+          <dd>A toda la Argentina · Representantes EcoFlow</dd>
         </div>
       </dl>
     </div>
@@ -941,109 +1076,176 @@ input[type=range]::-moz-range-thumb{
   </div>
 </section>
 
-<!-- ══════════════════════ INSTALACIONES ══════════════════════ -->
+<!-- ══════════════════════ OBRAS ══════════════════════ -->
 <section class="light sec" id="obras" style="padding-top:0">
   <div class="wrap">
     <div class="sec-head rv">
       <div class="sec-title-block">
-        <span class="tag">Obras ejecutadas</span>
+        <span class="tag">Obras realizadas</span>
         <h2>Instalaciones nuestras</h2>
       </div>
-      <p>Cada equipo se dimensiona sobre la factura y el techo reales del cliente. Estas son algunas.</p>
+      <p>Campos, casas, comercios, galpones y edificios. Tocá cualquier foto para verla completa.</p>
     </div>
+  </div>
 
-    <!-- SWAP: reemplazar cada .shot::before por <img src="fotos/xxx.jpg" alt="..."> -->
-    <div class="gal rv">
-      <figure class="shot g-a" tabindex="0">
-        <figcaption class="shot-cap">
-          <span class="shot-place">Vivienda unifamiliar — Funes</span>
-          <span class="shot-spec">6,6 kWp · 12 paneles · on-grid</span>
-        </figcaption>
-      </figure>
-      <figure class="shot g-b" tabindex="0">
-        <figcaption class="shot-cap">
-          <span class="shot-place">Galpón industrial — Alvear</span>
-          <span class="shot-spec">44 kWp · 80 paneles · trifásico</span>
-        </figcaption>
-      </figure>
-      <figure class="shot g-c" tabindex="0">
-        <figcaption class="shot-cap">
-          <span class="shot-place">Bombeo solar — Zona rural</span>
-          <span class="shot-spec">3,3 kWp · aislado · sin red</span>
-        </figcaption>
-      </figure>
-      <figure class="shot g-d" tabindex="0">
-        <figcaption class="shot-cap">
-          <span class="shot-place">Local comercial — Centro</span>
-          <span class="shot-spec">11 kWp · 20 paneles · on-grid</span>
-        </figcaption>
-      </figure>
-      <figure class="shot g-e" tabindex="0">
-        <figcaption class="shot-cap">
-          <span class="shot-place">Casa de campo — Roldán</span>
-          <span class="shot-spec">8,8 kWp · híbrido con baterías</span>
-        </figcaption>
-      </figure>
+  <!-- las fotos se cargan desde OBRAS en el script -->
+  <div class="reel rv" id="reel" role="region" aria-roledescription="carrusel" aria-label="Fotos de obras realizadas">
+    <div class="reel-view" id="reelView"><div class="reel-track" id="reelTrack"></div></div>
+    <button class="reel-arrow prev" id="reelPrev" aria-label="Foto anterior"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 10H4M9 5l-5 5 5 5"/></svg></button>
+    <button class="reel-arrow next" id="reelNext" aria-label="Foto siguiente"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10h13M11 5l5 5-5 5"/></svg></button>
+    <div class="wrap reel-bar">
+      <span class="reel-hint" id="reelHint" aria-live="polite">En movimiento</span>
+      <span class="reel-n" id="reelN"></span>
     </div>
+  </div>
 
+  <div class="wrap">
     <!-- ── servicios ── -->
     <div class="svc rv" id="servicios">
       <div class="svc-item">
         <span class="svc-tag">01</span>
         <div>
-          <h3>Relevamiento y dimensionado</h3>
-          <p>Visitamos, medimos el techo, revisamos la factura y las sombras. De ahí sale el equipo que te corresponde, no el que queremos vender.</p>
+          <h3>Casas, oficinas y edificios</h3>
+          <p>Sistemas conectados a la red para bajar la factura. Relevamos el techo y el consumo real antes de cotizar.</p>
         </div>
       </div>
       <div class="svc-item">
         <span class="svc-tag">02</span>
         <div>
-          <h3>Provisión de equipos</h3>
-          <p>Paneles, inversores, estructuras, protecciones y baterías de marcas con representación y repuestos en el país.</p>
+          <h3>Campos y lugares sin red</h3>
+          <p>Sistemas aislados con baterías y bombeo solar para molinos, tanques y puestos alejados.</p>
         </div>
       </div>
       <div class="svc-item">
         <span class="svc-tag">03</span>
         <div>
-          <h3>Instalación y puesta en marcha</h3>
-          <p>Montaje, tablero, cableado y conexión con personal propio. Te entregamos el sistema andando y monitoreado.</p>
+          <h3>Inversores on-grid, off-grid e híbridos</h3>
+          <p>Trabajamos con Growatt y GoodWe. Te asesoramos sobre cuál conviene según tu instalación.</p>
         </div>
       </div>
       <div class="svc-item">
         <span class="svc-tag">04</span>
         <div>
-          <h3>Trámite de generación distribuida</h3>
-          <p>Proyecto firmado por matriculado, solicitud ante la distribuidora y gestión del medidor bidireccional.</p>
+          <h3>Baterías de litio</h3>
+          <p>Baterías Growatt para guardar la energía que generás y tener respaldo cuando se corta la luz.</p>
         </div>
       </div>
       <div class="svc-item">
         <span class="svc-tag">05</span>
         <div>
-          <h3>Sistemas aislados y bombeo</h3>
-          <p>Donde no llega la red: banco de baterías, bombeo solar para tanques y molinos, electrificación de puestos.</p>
+          <h3>Carros de energía fotovoltaica</h3>
+          <p>Paneles montados sobre trailer para llevar la energía de un lote a otro, a la obra o al puesto.</p>
         </div>
       </div>
       <div class="svc-item">
         <span class="svc-tag">06</span>
         <div>
-          <h3>Mantenimiento y ampliación</h3>
-          <p>Limpieza, revisión de conexiones, informe de generación y ampliación del equipo cuando crece el consumo.</p>
+          <h3>Envíos a todo el país</h3>
+          <p>Si estás fuera de nuestra zona de instalación, te enviamos los equipos a cualquier punto de la Argentina.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════ CIERRE ══════════════════════ -->
-<section class="close">
-  <div class="wrap close-grid">
-    <h2>Contanos tu caso y te decimos qué te conviene</h2>
-    <div class="close-act">
-      <p>
-        Seis preguntas, menos de un minuto. Con eso armamos el mensaje y seguís por WhatsApp
-        con un asesor, no con un bot. El asesoramiento no tiene cargo.
-      </p>
-      <button class="btn btn-sol" data-open-wz>Empezar la consulta</button>
+<!-- ══════════════════════ MÓVIL ══════════════════════ -->
+<section class="movil" id="movil">
+  <div class="wrap movil-grid">
+    <figure class="foto rv">
+      <img src="fotos/obras/07-carro-solar.webp" alt="Carro con cuatro paneles solares montados sobre un trailer verde" loading="lazy" decoding="async" width="1800" height="1435">
+      <figcaption>Carro fotovoltaico</figcaption>
+    </figure>
+    <div class="rv">
+      <span class="tag">Energía que se mueve</span>
+      <h2>Carros solares y kits para casillas</h2>
+      <p class="movil-lead">Para el campo, la obra o el viaje: la energía va donde vas vos. Armamos el equipo según lo que necesitás alimentar.</p>
+      <div class="kits">
+        <article class="kit">
+          <span class="kit-k">Carro fotovoltaico</span>
+          <h3>Paneles sobre trailer</h3>
+          <p>Se engancha y se lleva a donde haga falta: lotes, puestos, obras o eventos.</p>
+        </article>
+        <article class="kit">
+          <span class="kit-k">Casilla rural · 12 V</span>
+          <h3>Kit instalado</h3>
+          <ul><li>Sistema de 12 V</li><li>Batería de 200 Ah</li><li>Con instalación</li></ul>
+        </article>
+        <article class="kit">
+          <span class="kit-k">Casilla o motorhome · 220 V</span>
+          <h3>Kit 220 V</h3>
+          <ul><li>3 paneles de 460 W</li><li>Inversor de 3 kW</li><li>2 baterías de gel de 200 Ah</li></ul>
+        </article>
+      </div>
+      <a class="btn btn-sol" href="#" data-wa-link data-wa-msg="Hola Solar Glow! Quiero consultar por un kit para casilla / motorhome o un carro solar.">Consultar precio vigente</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ ECOFLOW + MARCAS ══════════════════════ -->
+<section class="light sec eco" id="productos">
+  <div class="wrap">
+    <div class="eco-grid">
+      <div class="rv">
+        <span class="tag">Representantes EcoFlow</span>
+        <h2>Energía portátil EcoFlow, con asesoramiento cerca</h2>
+        <p class="eco-lead">Estaciones de energía, paneles plegables, heladeras y aires portátiles. Para cortes de luz, el campo, la casilla o el fin de semana.</p>
+        <dl class="eco-lines">
+          <div><dt>Serie RIVER</dt><dd>De 245 a 858 Wh · desde 3,5 kg · carga en 1 hora</dd></div>
+          <div><dt>Serie DELTA</dt><dd>De 1.024 a 4.096 Wh · hasta 7.200 W de pico</dd></div>
+          <div><dt>DELTA Pro Ultra</dt><dd>6 kWh expandible a 30 kWh · cubre todos los electrodomésticos</dd></div>
+          <div><dt>Paneles portátiles</dt><dd>110 W, 160 W, 220 W bifacial y 400 W</dd></div>
+          <div><dt>Glacier · Wave</dt><dd>Heladeras portátiles y aires acondicionados sin instalación</dd></div>
+        </dl>
+        <div class="eco-act">
+          <a class="btn btn-dark" href="#" data-wa-link data-wa-msg="Hola Solar Glow! Quiero consultar stock y precio de equipos EcoFlow.">Consultar stock</a>
+          <a class="btn btn-ink" href="docs/catalogo-ecoflow-2026.pdf" target="_blank" rel="noopener">Ver catálogo 2026 · PDF</a>
+        </div>
+      </div>
+      <figure class="foto rv">
+        <img src="fotos/ecoflow-stand.webp" alt="Exhibidor de EcoFlow con una estación DELTA y un panel solar portátil" loading="lazy" decoding="async" width="1350" height="1800">
+        <figcaption>Exhibidor EcoFlow</figcaption>
+      </figure>
+    </div>
+
+    <div class="marcas rv">
+      <span class="tag">Marcas con las que trabajamos</span>
+      <ul class="marcas-list">
+        <li><b>EcoFlow</b><span>Representantes · energía portátil</span></li>
+        <li><b>Growatt</b><span>Inversores y baterías de litio</span></li>
+        <li><b>GoodWe</b><span>Inversores on-grid, off-grid, híbridos y de bombeo</span></li>
+        <li><b>Ritar</b><span>Baterías</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ CIERRE + CONTACTO ══════════════════════ -->
+<section class="close" id="contacto">
+  <div class="wrap">
+    <div class="close-grid">
+      <h2>Contanos tu caso y te decimos qué te conviene</h2>
+      <div class="close-act">
+        <p>
+          Seis preguntas, menos de un minuto. Con eso armamos el mensaje y seguís por WhatsApp
+          con un asesor, no con un bot. El asesoramiento no tiene cargo.
+        </p>
+        <button class="btn btn-sol" data-open-wz>Empezar la consulta</button>
+      </div>
+    </div>
+
+    <div class="donde">
+      <figure class="foto rv">
+        <img src="fotos/envios.webp" alt="Camioneta con el logo de Solar Glow cargando paneles solares" loading="lazy" decoding="async" width="788" height="1400">
+        <figcaption>Envíos a todo el país</figcaption>
+      </figure>
+      <dl class="donde-dl rv">
+        <div><dt>Base</dt><dd>Río Tercero, Córdoba</dd></div>
+        <div><dt>Instalamos en</dt><dd>Río Tercero y zona · Buenos Aires · Santiago del Estero</dd></div>
+        <div><dt>Envíos</dt><dd>Equipos a toda la Argentina</dd></div>
+        <div><dt>WhatsApp</dt><dd><a href="#" data-wa-link>+54 9 3571 57-3282</a></dd></div>
+        <div><dt>Instagram</dt><dd><a href="https://www.instagram.com/solar.glowcordoba/" target="_blank" rel="noopener">@solar.glowcordoba</a></dd></div>
+        <div><dt>Facebook</dt><dd>Solar Glow</dd></div>
+      </dl>
     </div>
   </div>
 </section>
@@ -1053,35 +1255,33 @@ input[type=range]::-moz-range-thumb{
   <div class="wrap">
     <div class="foot-grid">
       <div>
-        <a class="brand" href="#top" style="margin-bottom:14px">
-          <span class="brand-mark"></span><span class="brand-name">Solar&nbsp;Glow</span>
-        </a>
-        <p style="color:#9DA9B7;font-size:14.5px;max-width:34ch;margin-top:14px">
-          Energía solar fotovoltaica. Proyecto, provisión, instalación y puesta en marcha.
+        <a href="#top"><img class="foot-logo" src="fotos/marca/logo.png" alt="Solar Glow · Soluciones en energía renovable" width="1200" height="242" loading="lazy"></a>
+        <p style="color:#9DA9B7;font-size:14.5px;max-width:34ch;margin-top:18px">
+          Paneles solares, inversores, baterías y energía portátil. Río Tercero, Córdoba.
         </p>
       </div>
       <div>
         <h4>Contacto</h4>
         <ul>
-          <li><a href="#" data-wa-link>WhatsApp</a></li>
-          <li><a href="mailto:hola@solarglow.com.ar">hola@solarglow.com.ar</a></li>
-          <li><a href="#" >Instagram</a></li>
+          <li><a href="#" data-wa-link>WhatsApp · +54 9 3571 57-3282</a></li>
+          <li><a href="https://www.instagram.com/solar.glowcordoba/" target="_blank" rel="noopener">Instagram · @solar.glowcordoba</a></li>
+          <li>Facebook · Solar Glow</li>
         </ul>
       </div>
       <div>
         <h4>Cobertura</h4>
         <ul>
-          <li>Santa Fe</li>
-          <li>Córdoba</li>
+          <li>Río Tercero y zona, Córdoba</li>
           <li>Buenos Aires</li>
-          <li>Entre Ríos</li>
+          <li>Santiago del Estero</li>
+          <li>Envíos a todo el país</li>
         </ul>
       </div>
     </div>
     <div class="foot-bar">
       <span>© 2026 Solar Glow</span>
-      <span>Instalaciones bajo Ley 27.424</span>
-      <span style="color:var(--brasa)">Demo de diseño · textos, obras y contacto de ejemplo</span>
+      <span>Río Tercero · Córdoba</span>
+      <span>Representantes EcoFlow</span>
     </div>
   </div>
 </footer>
@@ -1114,6 +1314,22 @@ input[type=range]::-moz-range-thumb{
   </div>
 </div>
 
+<!-- ══════════════════════ VISOR DE FOTOS ══════════════════════ -->
+<dialog class="lb" id="lb" aria-label="Fotos de obras">
+  <div class="lb-top">
+    <span class="lb-n" id="lbN"></span>
+    <button class="lb-x" id="lbClose" aria-label="Cerrar">
+      <svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M1 1l13 13M14 1L1 14"/></svg>
+    </button>
+  </div>
+  <div class="lb-stage" id="lbStage">
+    <img class="lb-img" id="lbImg" alt="" draggable="false">
+    <button class="lb-arrow prev" id="lbPrev" aria-label="Foto anterior"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 10H4M9 5l-5 5 5 5"/></svg></button>
+    <button class="lb-arrow next" id="lbNext" aria-label="Foto siguiente"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10h13M11 5l5 5-5 5"/></svg></button>
+  </div>
+  <p class="lb-cap"><span class="lb-k" id="lbK"></span><span class="lb-t" id="lbT"></span></p>
+</dialog>
+
 <script>
 /* ============================================================
    CONFIG — todo lo ajustable con el cliente vive acá
@@ -1121,7 +1337,7 @@ input[type=range]::-moz-range-thumb{
 const CONFIG = {
   // Número de WhatsApp en formato internacional, sin + ni espacios.
   // AR: 54 + 9 + característica sin 0 + número sin 15.  Ej: 5493411234567
-  whatsapp: '5493411234567',
+  whatsapp: '5493571573282',   // +54 9 3571 57-3282
 
   precioKwh: 165,        // $/kWh promedio con impuestos — REVISAR con el cliente
   potenciaPanel: 550,    // W por panel
@@ -1441,11 +1657,11 @@ const ETIQ = {
 
 const PASOS = [
   { k:'objetivo', q:'¿Qué querés resolver?', help:'Con esto sabemos por dónde empezar la charla.',
-    opts:['Bajar la factura de mi casa','Un comercio, oficina o industria','Un campo o puesto sin red eléctrica','Todavía no sé — quiero que me asesoren'] },
+    opts:['Bajar la factura de mi casa','Un comercio, oficina o edificio','Un campo o lugar sin red eléctrica','Casilla, motorhome o carro solar','Equipos EcoFlow (energía portátil)','Todavía no sé — quiero que me asesoren'] },
   { k:'factura', q:'¿Cuánto pagás de luz por mes?', help:'Aunque sea aproximado. Es el dato que más define el equipo.',
     opts:['Menos de $40.000','Entre $40.000 y $100.000','Entre $100.000 y $250.000','Más de $250.000','No tengo el dato a mano'] },
-  { k:'lugar', q:'¿Dónde está la propiedad?', help:'Localidad y provincia. Sirve para saber si entra en nuestra zona de cobertura.',
-    field:{ph:'Ej: Funes, Santa Fe', label:'Localidad y provincia'} },
+  { k:'lugar', q:'¿Dónde está la propiedad?', help:'Localidad y provincia. Instalamos en Córdoba, Buenos Aires y Santiago del Estero; al resto del país enviamos equipos.',
+    field:{ph:'Ej: Río Tercero, Córdoba', label:'Localidad y provincia'} },
   { k:'techo', q:'¿Cómo es el techo?', help:'Define la estructura de montaje y el costo de instalación.',
     opts:['Chapa','Teja','Losa o platea','Suelo, parral o estructura aparte','No sé / lo vemos juntos'] },
   { k:'plazo', q:'¿Para cuándo lo estás pensando?', help:'Sin compromiso — es para saber cómo ordenarnos.',
@@ -1598,7 +1814,236 @@ $$('[data-open-wz]').forEach(b=>b.addEventListener('click', abrirWz));
 
 // links directos a WhatsApp (fab y footer) con un mensaje base
 $$('[data-wa-link]').forEach(a=>{
-  a.href = waURL('Hola Solar Glow! Me gustaría hacer una consulta sobre paneles solares.');
+  a.href = waURL(a.dataset.waMsg || 'Hola Solar Glow! Me gustaría hacer una consulta sobre paneles solares.');
   a.target = '_blank'; a.rel = 'noopener';
 });
+
+/* ─────────── OBRAS: carrete + visor ─────────── */
+// [archivo en fotos/obras (sin extensión), título, tipo, ancho, alto de la versión -sm]
+// para sumar una obra: exportar NN-nombre.webp (1800px) y NN-nombre-sm.webp (560px de alto) y agregar la fila
+const OBRAS = [
+  ['01-rio',             'Techo de chapa con vista al río',          'Vivienda', 747,560],
+  ['02-aerea',           'Vista aérea de dos techos instalados',     'Edificio', 420,560],
+  ['03-grua-comercio',   'Izaje con hidrogrúa sobre un local',       'Comercio', 420,560],
+  ['04-campo-atardecer', 'Estructura sobre suelo en el campo',       'Campo',    420,560],
+  ['05-techo-chapa',     'Dos filas sobre techo de chapa',           'Vivienda', 900,506],
+  ['06-industria',       'Estructura elevada en planta industrial',  'Industria',558,560],
+  ['07-carro-solar',     'Carro fotovoltaico móvil',                 'Móvil',    702,560],
+  ['08-galpon-rural',    'Galpón rural cubierto de punta a punta',   'Campo',    315,560],
+  ['09-azotea-grua',     'Subida de paneles a una azotea',           'Edificio', 900,506],
+  ['10-molino',          'Montaje junto al molino',                  'Campo',    315,560],
+  ['11-azotea',          'Dos arreglos sobre azotea',                'Vivienda', 900,506],
+  ['12-nieve',           'Paneles bajo la nieve',                    'Vivienda', 373,560],
+  ['13-techo-urbano',    'Techo en zona urbana',                     'Urbano',   315,560],
+  ['14-suelo-amanecer',  'Estructura de suelo al amanecer',          'Campo',    315,560],
+  ['15-techo-curvo',     'Galpón de techo curvo',                    'Industria',315,560],
+  ['16-casa-campo',      'Casa de campo',                            'Campo',    315,560],
+  ['17-grua-esquina',    'Izaje sobre una esquina céntrica',         'Comercio', 315,560],
+  ['18-detalle-campo',   'Detalle del panel en el lote',             'Campo',    420,560],
+  ['19-relevamiento',    'Recorrida de azotea antes de instalar',    'Edificio', 420,560],
+  ['20-galpon-nublado',  'Galpón completo en un día nublado',        'Industria',315,560],
+  ['21-sierras',         'Techo de chapa en zona serrana',           'Vivienda', 900,506]
+];
+
+(function obras(){
+  const reel = $('#reel'), view = $('#reelView'), track = $('#reelTrack');
+  if(!track) return;
+
+  const N = OBRAS.length, COPIAS = 3;          // 3 copias: el carrete da la vuelta sin huecos
+  const VEL = 42;                              // px por segundo
+  const src = (f, chica) => 'fotos/obras/' + f + (chica ? '-sm' : '') + '.webp';
+  const dos = n => String(n).padStart(2, '0');
+  const fine = matchMedia('(hover:hover) and (pointer:fine)').matches;
+
+  for(let c = 0; c < COPIAS; c++){
+    OBRAS.forEach(([f, t, k, w, h], i)=>{
+      const b = document.createElement('button');
+      b.type = 'button'; b.className = 'reel-item'; b.dataset.i = i;
+      b.style.setProperty('--ar', (w/h).toFixed(4));
+      // solo la primera copia es navegable: las otras son relleno visual
+      if(c > 0){ b.tabIndex = -1; b.setAttribute('aria-hidden', 'true'); }
+      else b.setAttribute('aria-label', 'Ver foto: ' + t);
+      // sin loading="lazy": las fotos se mueven con transform y el lazy nativo las pedía recién
+      // al entrar en cuadro (se veían tiles vacíos). Se cargan todas juntas al acercarse el carrete.
+      b.innerHTML = `<img data-src="${src(f, true)}" alt="" decoding="async" draggable="false" width="${w}" height="${h}">` +
+                    '<span class="reel-cap"><span class="reel-k"></span><span class="reel-t"></span></span>';
+      b.querySelector('.reel-k').textContent = k;
+      b.querySelector('.reel-t').textContent = t;
+      track.appendChild(b);
+    });
+  }
+  const items = [...track.children];
+
+  // setW = ancho de una copia; starts = borde izquierdo de cada foto en las dos primeras copias
+  let setW = 0, starts = [];
+  const medir = () => {
+    const x0 = items[0].offsetLeft;
+    setW = items[N].offsetLeft - x0;
+    starts = items.slice(0, 2*N + 1).map(el => el.offsetLeft - x0);
+  };
+  medir();
+
+  let x = 0, pintado = -1, last = 0, tween = null;
+  const pausa = { hover:false, foco:false, visor:false, toque:false, fuera:true };
+  const envolver = v => setW ? ((v % setW) + setW) % setW : v;
+
+  // arrastre (mouse o dedo)
+  let drag = false, arrastro = false, px0 = 0, x0 = 0, tToque = 0;
+
+  const hint = $('#reelHint'), cont = $('#reelN');
+  let txtPrevio = '', nPrevio = -1;
+  function ui(){
+    let idx = 0;
+    for(let j = 0; j < N; j++) if(starts[j] <= x + 2) idx = j;
+    if(idx !== nPrevio){ cont.textContent = dos(idx+1) + ' / ' + dos(N); nPrevio = idx; }
+    const quieto = reduced || drag || pausa.hover || pausa.foco || pausa.toque || pausa.visor;
+    const txt = quieto
+      ? (fine ? 'En pausa · usá las flechas' : 'En pausa · deslizá para mover')
+      : (fine ? 'En movimiento · pasá el mouse para frenar' : 'En movimiento · tocá para frenar');
+    if(txt !== txtPrevio){ hint.textContent = txt; hint.classList.toggle('on', !quieto); txtPrevio = txt; }
+  }
+
+  function loop(t){
+    const dt = last ? Math.min((t - last)/1000, .05) : 0;
+    last = t;
+    if(tween){
+      const p = Math.min((t - tween.t0)/tween.dur, 1);
+      x = tween.from + (tween.to - tween.from) * (1 - Math.pow(1-p, 3));
+      if(p >= 1){ x = envolver(tween.to); tween = null; }
+    } else if(!drag && !reduced && !Object.values(pausa).some(Boolean)){
+      x = envolver(x + VEL*dt);
+    }
+    if(x !== pintado){ track.style.transform = `translate3d(${(-x).toFixed(2)}px,0,0)`; pintado = x; }
+    ui();
+    requestAnimationFrame(loop);
+  }
+  requestAnimationFrame(loop);
+
+  // anima hasta `to` por el camino corto, teniendo en cuenta que el carrete es circular
+  function irA(to){
+    if(to < 0) to += setW;
+    let cur = x;
+    while(cur - to > setW/2) cur -= setW;
+    while(to - cur > setW/2) cur += setW;
+    if(cur < 0){ cur += setW; to += setW; }
+    tween = { from:cur, to, t0:performance.now(), dur: reduced ? 1 : 520 };
+  }
+
+  function mover(dir){
+    let base = envolver(tween ? tween.to : x);   // clics rápidos se encadenan
+    if(dir < 0 && base < 2) base += setW;
+    let to;
+    if(dir > 0) to = starts.find(s => s > base + 2);
+    else for(const s of starts) if(s < base - 2) to = s;
+    if(to !== undefined) irA(to);
+  }
+
+  $('#reelPrev').addEventListener('click', ()=>mover(-1));
+  $('#reelNext').addEventListener('click', ()=>mover(1));
+  reel.addEventListener('keydown', e=>{
+    if(e.key === 'ArrowRight'){ e.preventDefault(); mover(1); }
+    if(e.key === 'ArrowLeft'){  e.preventDefault(); mover(-1); }
+  });
+
+  // el mouse encima frena todo el bloque, flechas incluidas
+  reel.addEventListener('pointerenter', e=>{ if(e.pointerType === 'mouse') pausa.hover = true; });
+  reel.addEventListener('pointerleave', e=>{ if(e.pointerType === 'mouse') pausa.hover = false; });
+
+  track.addEventListener('focusin', e=>{
+    const b = e.target.closest('.reel-item');
+    if(!b || !b.matches(':focus-visible')) return;
+    pausa.foco = true;
+    const s = starts[+b.dataset.i], izq = s - envolver(x);
+    if(izq < 0 || izq + b.offsetWidth > view.clientWidth) irA(s - 48);
+  });
+  track.addEventListener('focusout', ()=>{ pausa.foco = false; });
+
+  view.addEventListener('pointerdown', e=>{
+    if(e.button !== 0) return;
+    drag = true; arrastro = false; px0 = e.clientX; x0 = x; tween = null;
+    if(e.pointerType !== 'mouse'){ pausa.toque = true; clearTimeout(tToque); }
+  });
+  addEventListener('pointermove', e=>{
+    if(!drag) return;
+    const dx = e.clientX - px0;
+    if(!arrastro && Math.abs(dx) > 6){ arrastro = true; view.classList.add('drag'); }
+    if(arrastro) x = envolver(x0 - dx);
+  }, {passive:true});
+  const soltar = e=>{
+    if(!drag) return;
+    drag = false; view.classList.remove('drag');
+    if(e.pointerType !== 'mouse'){ clearTimeout(tToque); tToque = setTimeout(()=>{ pausa.toque = false; }, 3000); }
+  };
+  addEventListener('pointerup', soltar);
+  addEventListener('pointercancel', soltar);
+
+  new IntersectionObserver(([en])=>{ pausa.fuera = !en.isIntersecting; }).observe(view);
+  // ~770 KB en total: cuando falta poco para llegar, se piden todas (las copias salen de caché)
+  const cargar = new IntersectionObserver(([en])=>{
+    if(!en.isIntersecting) return;
+    track.querySelectorAll('img[data-src]').forEach(im=>{ im.src = im.dataset.src; im.removeAttribute('data-src'); });
+    cargar.disconnect();
+  }, {rootMargin:'900px 0px'});
+  cargar.observe(view);
+  addEventListener('resize', ()=>{
+    const r = setW ? envolver(x)/setW : 0;
+    medir(); x = r*setW; tween = null;
+  }, {passive:true});
+
+  /* visor */
+  const lb = $('#lb'), img = $('#lbImg'), stage = $('#lbStage');
+  let actual = 0, pedido = 0, volverA = null;
+
+  function mostrar(i){
+    actual = (i + N) % N;
+    const [f, t, k] = OBRAS[actual];
+    const mio = ++pedido;
+    img.src = src(f, true);                     // la chica ya está en caché: aparece al instante
+    img.alt = t;
+    const grande = new Image();
+    grande.onload = ()=>{ if(mio === pedido) img.src = grande.src; };
+    grande.src = src(f);
+    $('#lbK').textContent = k;
+    $('#lbT').textContent = t;
+    $('#lbN').textContent = dos(actual+1) + ' / ' + dos(N);
+    [actual+1, actual-1].forEach(j=>{ new Image().src = src(OBRAS[(j+N)%N][0]); });
+  }
+
+  track.addEventListener('click', e=>{
+    const b = e.target.closest('.reel-item');
+    if(!b) return;
+    if(arrastro){ arrastro = false; return; }   // fue un arrastre, no un clic
+    // el foco solo vuelve si se abrió con teclado (detail 0): con mouse dejaría el carrete en pausa
+    volverA = e.detail === 0 ? items[+b.dataset.i] : null;
+    mostrar(+b.dataset.i);
+    pausa.visor = true;
+    lb.showModal();
+    document.body.style.overflow = 'hidden';
+  });
+
+  lb.addEventListener('close', ()=>{
+    pausa.visor = false;
+    document.body.style.overflow = '';
+    if(volverA) volverA.focus({preventScroll:true});
+  });
+  $('#lbClose').addEventListener('click', ()=>lb.close());
+  $('#lbPrev').addEventListener('click', ()=>mostrar(actual-1));
+  $('#lbNext').addEventListener('click', ()=>mostrar(actual+1));
+  lb.addEventListener('keydown', e=>{
+    if(e.key === 'ArrowRight'){ e.preventDefault(); mostrar(actual+1); }
+    if(e.key === 'ArrowLeft'){  e.preventDefault(); mostrar(actual-1); }
+  });
+
+  // deslizar en el visor; tocar el fondo lo cierra
+  let sx = null, swipe = false;
+  stage.addEventListener('pointerdown', e=>{ sx = e.clientX; swipe = false; });
+  stage.addEventListener('pointerup', e=>{
+    if(sx === null) return;
+    const dx = e.clientX - sx; sx = null;
+    if(Math.abs(dx) > 50){ swipe = true; mostrar(actual + (dx < 0 ? 1 : -1)); }
+  });
+  stage.addEventListener('click', e=>{
+    if(!swipe && e.target === stage) lb.close();
+  });
+})();
 </script>
