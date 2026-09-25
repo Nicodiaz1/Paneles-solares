@@ -761,7 +761,7 @@ input[type=range]::-moz-range-thumb{
 @media (max-width:900px){.eco .foto{aspect-ratio:4/3}}
 
 .marcas{margin-top:clamp(60px,8vw,96px)}
-.marcas-list{list-style:none;margin:22px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,1fr)}
+.marcas-list{list-style:none;margin:22px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,1fr)}
 .marcas-list li{display:flex;flex-direction:column;gap:6px;padding:22px 20px 22px 0;border-bottom:1px solid var(--acero-3)}
 .marcas-list li + li{padding-left:20px;border-left:1px solid var(--acero-3)}
 @media (max-width:820px){
@@ -786,6 +786,26 @@ input[type=range]::-moz-range-thumb{
 .donde-dl dd{margin:0;font-size:17px;line-height:1.35;color:var(--acero)}
 .donde-dl a{color:var(--sol);text-decoration:none;border-bottom:1px solid rgba(92,240,30,.35);transition:border-color .2s}
 .donde-dl a:hover{border-color:var(--sol)}
+
+/* ── equipos ── */
+.equipos{margin-top:clamp(76px,10vw,128px)}
+.eq-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media (max-width:900px){.eq-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.eq-grid{grid-template-columns:1fr}}
+.eq{background:#F4F6F8;border:1px solid var(--acero-3);border-radius:4px;padding:18px 20px 22px;display:flex;flex-direction:column}
+.eq-img{
+  position:relative;margin:0 0 18px;height:clamp(170px,18vw,220px);border-radius:3px;
+  background:radial-gradient(70% 70% at 50% 45%,#FFFFFF 0%,#E9EDF1 100%);
+}
+/* absoluta: dentro de una celda de altura fija el max-height en % no resolvía y la foto desbordaba */
+.eq-img img{
+  position:absolute;inset:10% 12%;width:76%;height:80%;object-fit:contain;
+  filter:drop-shadow(0 16px 18px rgba(11,15,22,.16));transition:transform .5s cubic-bezier(.2,.85,.25,1);
+}
+.eq:hover .eq-img img{transform:translateY(-4px) scale(1.03)}
+.eq-k{font-family:var(--f-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--brasa);margin-bottom:8px}
+.eq h3{font-size:19px;font-variation-settings:"wdth" 110,"wght" 650;letter-spacing:-.01em;margin-bottom:6px;line-height:1.2}
+.eq p{font-size:14.5px;color:var(--gris);line-height:1.55}
 
 /* ── marca real ── */
 .brand-mark{
@@ -903,10 +923,10 @@ input[type=range]::-moz-range-thumb{
           <span class="step-plus" aria-hidden="true"></span>
         </button>
         <div class="step-body"><div><div class="step-detail">
-          Un panel monocristalino de <strong>550 W</strong> no tiene partes móviles, no hace ruido y trabaja
+          Un panel monocristalino de <strong>580 a 710 W</strong> no tiene partes móviles, no hace ruido y trabaja
           entre 25 y 30 años con una pérdida de rendimiento de menos del 0,5% anual.
           El mantenimiento real es una limpieza de vidrio una o dos veces al año.
-          <span class="step-note">Garantía de producto 12 años · rendimiento 25 años</span>
+          <span class="step-note">Garantía de producto 5 años · rendimiento 30 años</span>
         </div></div></div>
       </div>
 
@@ -951,8 +971,8 @@ input[type=range]::-moz-range-thumb{
         </button>
         <div class="step-body"><div><div class="step-detail">
           La <strong>Ley 27.424 de Generación Distribuida</strong> habilita al usuario a inyectar su excedente
-          y obliga a la distribuidora a reconocerlo como crédito en la factura. Nosotros gestionamos el trámite
-          completo: proyecto firmado por profesional matriculado, solicitud de conexión y medidor bidireccional.
+          y obliga a la distribuidora a reconocerlo como crédito en la factura. Nosotros hacemos el trámite
+          completo: la solicitud de conexión ante la distribuidora y la gestión del medidor bidireccional.
           <span class="step-note">Gestión del trámite incluida</span>
         </div></div></div>
       </div>
@@ -1024,7 +1044,7 @@ input[type=range]::-moz-range-thumb{
             <dl>
               <dt>Precio del kWh usado</dt><dd id="sPrecio">—</dd>
               <dt>Horas de sol pico</dt><dd id="sHsp">—</dd>
-              <dt>Potencia por panel</dt><dd>550 W</dd>
+              <dt>Potencia por panel</dt><dd>660 W</dd>
               <dt>Rendimiento del sistema</dt><dd>78 %</dd>
             </dl>
           </div>
@@ -1044,7 +1064,7 @@ input[type=range]::-moz-range-thumb{
               <span class="ro-v" id="rKwp">0<small>kWp</small></span>
             </div>
             <div class="ro">
-              <span class="ro-k">Paneles · 550 W</span>
+              <span class="ro-k">Paneles · 660 W</span>
               <span class="ro-v" id="rPaneles">0</span>
             </div>
             <div class="ro">
@@ -1140,9 +1160,65 @@ input[type=range]::-moz-range-thumb{
       <div class="svc-item">
         <span class="svc-tag">06</span>
         <div>
+          <h3>Trámite de conexión a la red</h3>
+          <p>Gestionamos la solicitud ante la distribuidora y el medidor bidireccional, para que el excedente vuelva como crédito en tu factura.</p>
+        </div>
+      </div>
+      <div class="svc-item">
+        <span class="svc-tag">07</span>
+        <div>
           <h3>Envíos a todo el país</h3>
           <p>Si estás fuera de nuestra zona de instalación, te enviamos los equipos a cualquier punto de la Argentina.</p>
         </div>
+      </div>
+    </div>
+
+    <!-- ── equipos (fotos de producto del proveedor, ISECOM) ── -->
+    <div class="equipos" id="equipos">
+      <div class="sec-head rv">
+        <div class="sec-title-block">
+          <span class="tag">Equipos</span>
+          <h2>Lo que instalamos</h2>
+        </div>
+        <p>Inversores, baterías y paneles de marcas con respaldo en el país. Te ayudamos a elegir según tu consumo y tu techo.</p>
+      </div>
+      <div class="eq-grid rv">
+        <article class="eq">
+          <figure class="eq-img"><img src="fotos/equipos/growatt-on-grid.webp" alt="Inversor on-grid Growatt" loading="lazy" decoding="async"></figure>
+          <span class="eq-k">Growatt · On-grid</span>
+          <h3>Inversores conectados a red</h3>
+          <p>Monofásicos y trifásicos de 3 a 15 kW, con Wi-Fi para ver la generación desde el celular.</p>
+        </article>
+        <article class="eq">
+          <figure class="eq-img"><img src="fotos/equipos/goodwe-hibrido.webp" alt="Inversor híbrido GoodWe ES G2" loading="lazy" decoding="async"></figure>
+          <span class="eq-k">GoodWe · Híbrido</span>
+          <h3>Paneles y baterías en un equipo</h3>
+          <p>Serie ES G2: ahorro de día y respaldo cuando se corta la luz, con conmutación en menos de 10 ms.</p>
+        </article>
+        <article class="eq">
+          <figure class="eq-img"><img src="fotos/equipos/growatt-axe.webp" alt="Batería de litio apilable Growatt AXE" loading="lazy" decoding="async"></figure>
+          <span class="eq-k">Growatt · Litio</span>
+          <h3>Baterías apilables</h3>
+          <p>Módulos AXE de 5 kWh que se suman a medida que crece el consumo. 6.500 ciclos de vida útil.</p>
+        </article>
+        <article class="eq">
+          <figure class="eq-img"><img src="fotos/equipos/growatt-spf.webp" alt="Inversor off-grid Growatt SPF" loading="lazy" decoding="async"></figure>
+          <span class="eq-k">Growatt · Off-grid</span>
+          <h3>Donde no llega la red</h3>
+          <p>Inversores cargadores SPF de 3 a 6 kW, compatibles con baterías de litio, gel o AGM.</p>
+        </article>
+        <article class="eq">
+          <figure class="eq-img"><img src="fotos/equipos/growatt-spi.webp" alt="Inversor de bombeo solar Growatt SPI" loading="lazy" decoding="async"></figure>
+          <span class="eq-k">Growatt · Bombeo</span>
+          <h3>Bombeo solar</h3>
+          <p>Para pozos y tanques: arranca solo con el sol y se corta con los sensores de nivel.</p>
+        </article>
+        <article class="eq">
+          <figure class="eq-img"><img src="fotos/equipos/panel.webp" alt="Panel solar monocristalino" loading="lazy" decoding="async"></figure>
+          <span class="eq-k">Paneles</span>
+          <h3>Módulos monocristalinos</h3>
+          <p>Monocristalinos de 580 a 710 W, para techo de chapa, teja, losa o estructura sobre suelo.</p>
+        </article>
       </div>
     </div>
   </div>
@@ -1213,7 +1289,6 @@ input[type=range]::-moz-range-thumb{
         <li><b>EcoFlow</b><span>Representantes · energía portátil</span></li>
         <li><b>Growatt</b><span>Inversores y baterías de litio</span></li>
         <li><b>GoodWe</b><span>Inversores on-grid, off-grid, híbridos y de bombeo</span></li>
-        <li><b>Ritar</b><span>Baterías</span></li>
       </ul>
     </div>
   </div>
@@ -1340,7 +1415,7 @@ const CONFIG = {
   whatsapp: '5493571573282',   // +54 9 3571 57-3282
 
   precioKwh: 165,        // $/kWh promedio con impuestos — REVISAR con el cliente
-  potenciaPanel: 550,    // W por panel
+  potenciaPanel: 660,    // W por panel — instalan de 580 a 710 W, se toma un valor medio
   performanceRatio: 0.78,// pérdidas del sistema
   co2PorKwh: 0.35,       // kg CO2 por kWh de red
 
