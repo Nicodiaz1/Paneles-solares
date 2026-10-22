@@ -89,19 +89,10 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   border-bottom-color:rgba(92,240,30,.16);
 }
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
-.brand-mark{
-  width:19px;height:19px;border-radius:50%;flex:none;
-  background:radial-gradient(circle at 34% 30%,#FFE9BF,var(--sol) 46%,var(--brasa));
-  box-shadow:0 0 0 1px rgba(92,240,30,.35),0 0 22px rgba(70,200,20,.55);
-}
-.brand-name{
-  font-family:var(--f-mono);font-size:13px;font-weight:700;
-  letter-spacing:.22em;text-transform:uppercase;
-}
 .nav-links{display:flex;align-items:center;gap:30px}
 .nav-links a{
-  font-family:var(--f-mono);font-size:11.5px;letter-spacing:.13em;
-  text-transform:uppercase;text-decoration:none;color:var(--gris-noche);
+  font-family:var(--f-mono);font-size:12px;letter-spacing:.13em;
+  text-transform:uppercase;text-decoration:none;color:#A9B4C0;
   transition:color .2s;
 }
 .nav-links a:hover{color:var(--acero)}
@@ -109,8 +100,6 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 @media (max-width:520px){
   .nav{padding:12px 16px}
   .nav .btn{padding:11px 13px;font-size:10px;letter-spacing:.07em}
-  .brand-name{font-size:11px;letter-spacing:.15em}
-  .brand-mark{width:16px;height:16px}
 }
 
 /* ── botones ── */
@@ -563,7 +552,7 @@ input[type=range]::-moz-range-thumb{
 .lb{
   position:fixed;inset:0;width:100%;height:100%;max-width:none;max-height:none;
   margin:0;padding:0;border:0;overflow:hidden;
-  background:rgba(6,9,13,.96);color:var(--acero);
+  background:#05080C;color:var(--acero);
 }
 .lb[open]{display:grid;grid-template-rows:auto minmax(0,1fr) auto;animation:lb-in .28s ease}
 .lb::backdrop{background:transparent}
@@ -599,12 +588,24 @@ input[type=range]::-moz-range-thumb{
 }
 
 /* ── servicios ── */
-.svc{display:grid;grid-template-columns:repeat(2,1fr);gap:0 clamp(30px,5vw,70px);margin-top:clamp(60px,8vw,96px);border-top:1px solid var(--acero-3)}
-@media (max-width:740px){.svc{grid-template-columns:1fr}}
-.svc-item{padding:26px 0;border-bottom:1px solid var(--acero-3);display:flex;gap:18px;align-items:flex-start}
-.svc-tag{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--brasa);padding-top:5px;flex:none;width:34px}
-.svc-item h3{font-size:19px;font-variation-settings:"wdth" 110,"wght" 600;margin-bottom:6px}
-.svc-item p{color:var(--gris);font-size:15px;line-height:1.6}
+.svc{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:clamp(60px,8vw,96px)}
+@media (max-width:1100px){.svc{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:600px){.svc{grid-template-columns:1fr;gap:10px}}
+.svc-item{
+  position:relative;display:flex;flex-direction:column;gap:16px;
+  padding:22px 20px 24px;background:#F4F6F8;border:1px solid var(--acero-3);border-radius:4px;
+  transition:border-color .25s,transform .35s cubic-bezier(.2,.85,.25,1),box-shadow .35s;
+}
+.svc-item:hover{border-color:rgba(35,122,12,.4);transform:translateY(-3px);box-shadow:0 18px 34px -24px rgba(11,15,22,.35)}
+.svc-ico{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;flex:none;background:rgba(92,240,30,.16);color:var(--brasa)}
+.svc-ico svg{width:22px;height:22px}
+.svc-tag{position:absolute;top:22px;right:20px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.14em;color:#9AA4AF}
+.svc-item h3{font-size:18px;font-variation-settings:"wdth" 110,"wght" 650;line-height:1.2;margin-bottom:6px}
+.svc-item p{color:var(--gris);font-size:14.5px;line-height:1.55}
+@media (max-width:600px){
+  .svc-item{flex-direction:row;align-items:flex-start;padding:18px 16px}
+  .svc-tag{display:none}
+}
 
 /* ─────────────────── CIERRE ─────────────────── */
 
@@ -734,7 +735,7 @@ input[type=range]::-moz-range-thumb{
 }
 .movil .foto{aspect-ratio:5/4}
 .kits{
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:1px;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
   margin:30px 0 28px;background:rgba(230,233,236,.12);border:1px solid rgba(230,233,236,.12);
 }
 .kit{background:var(--noche);padding:20px 18px}
@@ -761,15 +762,19 @@ input[type=range]::-moz-range-thumb{
 @media (max-width:900px){.eco .foto{aspect-ratio:4/3}}
 
 .marcas{margin-top:clamp(60px,8vw,96px)}
+.eco{padding-bottom:clamp(64px,8vw,104px)}
 .marcas-list{list-style:none;margin:22px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,1fr)}
-.marcas-list li{display:flex;flex-direction:column;gap:6px;padding:22px 20px 22px 0;border-bottom:1px solid var(--acero-3)}
-.marcas-list li + li{padding-left:20px;border-left:1px solid var(--acero-3)}
-@media (max-width:820px){
-  .marcas-list{grid-template-columns:repeat(2,1fr)}
-  .marcas-list li:nth-child(odd){padding-left:0;border-left:0}
-}
-.marcas-list b{font-size:clamp(22px,2.6vw,30px);font-variation-settings:"wdth" 120,"wght" 800;letter-spacing:-.02em;line-height:1}
+.marcas-list li{display:flex;flex-direction:column;gap:8px;padding:28px 24px 28px 0;border-bottom:1px solid var(--acero-3)}
+.marcas-list li + li{padding-left:24px;border-left:1px solid var(--acero-3)}
+.marcas-list b{font-size:clamp(26px,3.4vw,44px);font-variation-settings:"wdth" 120,"wght" 800;letter-spacing:-.025em;line-height:1}
 .marcas-list span{font-size:14px;color:var(--gris);line-height:1.45}
+/* celular: una marca por fila, nombre a la izquierda y qué vendemos a la derecha */
+@media (max-width:640px){
+  .marcas-list{grid-template-columns:1fr}
+  .marcas-list li,.marcas-list li + li{flex-direction:row;align-items:center;justify-content:space-between;gap:16px;padding:18px 0;border-left:0}
+  .marcas-list b{font-size:26px}
+  .marcas-list span{text-align:right;max-width:58%}
+}
 
 /* ─────────────────── DÓNDE ESTAMOS ─────────────────── */
 .donde{
@@ -808,19 +813,38 @@ input[type=range]::-moz-range-thumb{
 .eq p{font-size:14.5px;color:var(--gris);line-height:1.55}
 
 /* ── marca real ── */
-.brand-mark{
-  width:24px;height:24px;border-radius:0;box-shadow:none;
-  background:url("fotos/marca/icono.png") center/contain no-repeat;
+.brand-logo{display:block;height:21px;width:auto}
+@media (max-width:520px){.brand-logo{height:16px}}
+
+/* etiquetas de sección en el verde de la marca */
+.tag{color:var(--brasa)}
+.sim-top .tag,.movil .tag{color:rgba(92,240,30,.78)}
+
+/* ── hero: datos sobre vidrio oscuro, legibles aunque pase la luz por detrás ── */
+.rail{
+  background:linear-gradient(180deg,rgba(9,13,19,.74),rgba(9,13,19,.58));
+  backdrop-filter:blur(14px) saturate(120%);-webkit-backdrop-filter:blur(14px) saturate(120%);
+  border:1px solid rgba(230,233,236,.10);border-radius:6px;
 }
-@media (max-width:520px){.brand-mark{width:19px;height:19px}}
+.rail > div{padding:16px 22px 14px}
+.rail dt{color:#7D8A9A}
+.rail small{color:#5E6B7A}
+@media (max-width:820px){
+  .rail > div:nth-child(odd){padding-left:18px}
+  .rail > div:nth-child(n+3){border-top:1px solid rgba(230,233,236,.10)}
+}
+@media (max-width:520px){.rail > div{padding:13px 14px 12px}.rail > div:nth-child(odd){padding-left:14px}}
+
+
+/* kits en una sola columna en celular */
+@media (max-width:560px){.kits{grid-template-columns:1fr}}
 .foot-logo{display:block;width:220px;height:auto}
 </style>
 
 <!-- ══════════════════════════ NAV ══════════════════════════ -->
 <nav class="nav" id="nav">
-  <a class="brand" href="#top">
-    <span class="brand-mark"></span>
-    <span class="brand-name">Solar&nbsp;Glow</span>
+  <a class="brand" href="#top" aria-label="Solar Glow, ir al inicio">
+    <img class="brand-logo" src="fotos/marca/logo-nav.png" alt="Solar Glow" width="640" height="63">
   </a>
   <div class="nav-links">
     <a href="#simulador">Tu ahorro</a>
@@ -1107,7 +1131,7 @@ input[type=range]::-moz-range-thumb{
     <div class="sec-head rv">
       <div class="sec-title-block">
         <span class="tag">Obras realizadas</span>
-        <h2>Instalaciones nuestras</h2>
+        <h2>Obras que ya están generando</h2>
       </div>
       <p>Campos, casas, comercios, galpones y edificios. Tocá cualquier foto para verla completa.</p>
     </div>
@@ -1128,6 +1152,7 @@ input[type=range]::-moz-range-thumb{
     <!-- ── servicios ── -->
     <div class="svc rv" id="servicios">
       <div class="svc-item">
+        <span class="svc-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v10h13V10"/><path d="M10 20v-5h4v5"/></svg></span>
         <span class="svc-tag">01</span>
         <div>
           <h3>Casas, oficinas y edificios</h3>
@@ -1135,6 +1160,7 @@ input[type=range]::-moz-range-thumb{
         </div>
       </div>
       <div class="svc-item">
+        <span class="svc-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="16.5" cy="7" r="2.5"/><path d="M2 19c3-4 6-5 9-3s6 2 11-2"/><path d="M2 21h20"/></svg></span>
         <span class="svc-tag">02</span>
         <div>
           <h3>Campos y lugares sin red</h3>
@@ -1142,6 +1168,7 @@ input[type=range]::-moz-range-thumb{
         </div>
       </div>
       <div class="svc-item">
+        <span class="svc-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V11l5 3v-3l5 3v-3l5 3V5h3v16"/><path d="M2 21h20"/><path d="M7 17h2M12 17h2M17 17h1"/></svg></span>
         <span class="svc-tag">03</span>
         <div>
           <h3>Industrias y galpones</h3>
@@ -1149,6 +1176,7 @@ input[type=range]::-moz-range-thumb{
         </div>
       </div>
       <div class="svc-item">
+        <span class="svc-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><rect x="8.5" y="7" width="7" height="4" rx="1"/><circle cx="12" cy="16" r="1.6"/></svg></span>
         <span class="svc-tag">04</span>
         <div>
           <h3>Inversores on-grid, off-grid e híbridos</h3>
@@ -1156,6 +1184,7 @@ input[type=range]::-moz-range-thumb{
         </div>
       </div>
       <div class="svc-item">
+        <span class="svc-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="7" width="17" height="10" rx="2"/><path d="M22 10.5v3"/><path d="M11.5 9 9 12.5h3.5L10 16"/></svg></span>
         <span class="svc-tag">05</span>
         <div>
           <h3>Baterías de litio</h3>
@@ -1163,6 +1192,7 @@ input[type=range]::-moz-range-thumb{
         </div>
       </div>
       <div class="svc-item">
+        <span class="svc-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l2.5-6h13L18 13z"/><path d="M11 7l-1.5 6M15 7l-1.5 6"/><path d="M2 15h17l3 1.5"/><circle cx="8" cy="18" r="2"/></svg></span>
         <span class="svc-tag">06</span>
         <div>
           <h3>Carros de energía fotovoltaica</h3>
@@ -1170,6 +1200,7 @@ input[type=range]::-moz-range-thumb{
         </div>
       </div>
       <div class="svc-item">
+        <span class="svc-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/><path d="m9 14 2 2 4-4"/></svg></span>
         <span class="svc-tag">07</span>
         <div>
           <h3>Trámite de conexión a la red</h3>
@@ -1177,6 +1208,7 @@ input[type=range]::-moz-range-thumb{
         </div>
       </div>
       <div class="svc-item">
+        <span class="svc-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6h12v10H2z"/><path d="M14 9h4l3 3.5V16h-7"/><circle cx="6" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg></span>
         <span class="svc-tag">08</span>
         <div>
           <h3>Envíos a todo el país</h3>
@@ -1313,7 +1345,7 @@ input[type=range]::-moz-range-thumb{
       <h2>Contanos tu caso y te decimos qué te conviene</h2>
       <div class="close-act">
         <p>
-          Seis preguntas, menos de un minuto. Con eso armamos el mensaje y seguís por WhatsApp
+          Siete preguntas, menos de un minuto. Con eso armamos el mensaje y seguís por WhatsApp
           con un asesor, no con un bot. El asesoramiento no tiene cargo.
         </p>
         <button class="btn btn-sol" data-open-wz>Empezar la consulta</button>
