@@ -898,11 +898,8 @@ input[type=range]::-moz-range-thumb{
 }
 .ctrl-label{margin-bottom:clamp(8px,1.6vh,16px)}
 .seg button{padding:8px 14px}
-.roof{width:min(250px,62%);margin:0 auto}
 .ro{padding:clamp(10px,1.8vh,17px) 16px}
 .ro.hero-ro .ro-v{font-size:clamp(28px,min(4vw,6vh),44px)}
-/* en pantallas bajas sale el dibujo del techo: es lo único decorativo del estimador */
-@media (min-width:901px) and (max-height:940px){.roof,.roof-mas{display:none}}
 .sim-foot{padding:clamp(12px,2.2vh,22px) 0 0;border-top:1px solid rgba(230,233,236,.11);row-gap:12px}
 .supuestos{
   display:flex;flex-wrap:wrap;gap:6px 26px;width:100%;margin:0;padding:0;border:0;
@@ -959,7 +956,6 @@ input[type=range]::-moz-range-thumb{
 .step-btn{padding:clamp(9px,1.6vh,20px) 4px}
 .step-detail{font-size:15px;padding-bottom:clamp(10px,1.8vh,22px)}
 
-.roof{width:min(220px,52%)}
 .disclaimer{max-width:96ch}
 
 .svc{gap:12px}
@@ -991,8 +987,23 @@ input[type=range]::-moz-range-thumb{
 }
 /* pantallas de 901 a 1100 px de ancho: menos columnas, así que todo se compacta en alto */
 @media (min-width:901px) and (max-width:1100px){
-  .roof,.roof-mas,.sim-top p{display:none}
+  .sim-top p{display:none}
   #equipos .eq-img{height:clamp(80px,12vh,120px)}
+}
+
+/* ── techo del estimador: chico, en el hueco a la derecha del ahorro ── */
+.ro.hero-ro{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:16px;align-items:center}
+.hero-ro .ro-k{grid-column:1;grid-row:1}
+.hero-ro .ro-v{grid-column:1;grid-row:2}
+.ro-techo{grid-column:2;grid-row:1 / span 2;width:clamp(120px,10vw,156px);display:flex;flex-direction:column;align-items:center;gap:2px}
+/* el plano está rotado en 3D: a la vista ocupa menos alto que su caja y sobresale un poco a los costados */
+.ro-techo .roof{width:84%;margin:-12px 0 -2px}
+.ro-techo .roof-mas{margin:0;font-size:9.5px;letter-spacing:.1em;color:#6D7A8A;white-space:nowrap}
+.ro-techo .roof-plane{background:linear-gradient(160deg,rgba(230,233,236,.06),rgba(230,233,236,.02))}
+/* celular: la etiqueta ocupa todo el ancho y el techo queda al lado del número */
+@media (max-width:620px){
+  .hero-ro .ro-k{grid-column:1 / -1}
+  .ro-techo{grid-row:2;width:112px}
 }
 </style>
 
@@ -1226,13 +1237,15 @@ input[type=range]::-moz-range-thumb{
         </div>
 
         <div class="sim-out">
-          <div class="roof" aria-hidden="true"><div class="roof-plane" id="roof"></div></div>
-          <p class="roof-mas" id="roofMas" hidden></p>
-
           <div class="readouts">
             <div class="ro hero-ro">
               <span class="ro-k">Ahorro estimado por mes</span>
               <span class="ro-v" id="rAhorro">$0</span>
+              <!-- el techo con los paneles va en el lugar libre a la derecha del ahorro -->
+              <div class="ro-techo" aria-hidden="true">
+                <div class="roof"><div class="roof-plane" id="roof"></div></div>
+                <p class="roof-mas" id="roofMas" hidden></p>
+              </div>
             </div>
             <div class="ro">
               <span class="ro-k">Sistema sugerido</span>
@@ -1861,12 +1874,14 @@ function tick(el, to, fmt){
 
 function renderRoof(n){
   const roof = $('#roof');
-  const shown = Math.min(n, 42);
+  const shown = Math.min(n, 24);
   let cols = Math.max(3, Math.round(Math.sqrt(shown*1.7)));
   // evitar una última fila con un solo panel suelto
   while(cols > 3 && shown % cols === 1) cols--;
   const rows = Math.ceil(shown/cols);
-  const GAP = 4, ANCHO = 248, ALTO = 150;
+  // espacio útil del plano (descontando su padding); si todavía no se midió, el tamaño de siempre
+  const GAP = 4, ANCHO = roof.clientWidth ? roof.clientWidth - 32 : 248,
+        ALTO = roof.clientHeight ? roof.clientHeight - 30 : 150;
   // el panel se achica para que la grilla entre siempre en el plano del techo
   const pw = Math.max(7, Math.min((ANCHO - (cols-1)*GAP)/cols,
                                   (ALTO  - (rows-1)*GAP)/(rows*1.55)));
@@ -1913,6 +1928,12 @@ function calcular(){
 }
 $('#vFactura').textContent = money(sim.factura);
 calcular();
+// el techo cambia de tamaño con el ancho de la pantalla
+let tTecho = 0;
+addEventListener('resize', ()=>{
+  clearTimeout(tTecho);
+  tTecho = setTimeout(()=>{ if(sim.out) renderRoof(sim.out.paneles); }, 150);
+}, {passive:true});
 
 /* ─────────── campo del hero → simulador ─────────── */
 (function quick(){
