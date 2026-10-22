@@ -179,8 +179,9 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .field-fog{
   position:absolute;inset:0;pointer-events:none;
   background:
-    linear-gradient(180deg,var(--noche) 0%,rgba(11,15,22,.90) 13%,rgba(11,15,22,.28) 31%,transparent 46%),
-    radial-gradient(96% 66% at 50% 100%,transparent 42%,rgba(11,15,22,.62) 100%);
+    linear-gradient(180deg,transparent calc(var(--horizonte) - 6%),rgba(120,112,118,.62) calc(var(--horizonte) + .5%),
+      rgba(38,40,52,.42) calc(var(--horizonte) + 7%),rgba(11,15,22,0) calc(var(--horizonte) + 22%)),
+    radial-gradient(96% 66% at 50% 100%,transparent 42%,rgba(11,15,22,.55) 100%);
 }
 /* el sol / la luz que sigue al cursor: blanco cálido, no naranja */
 .glow{
@@ -194,10 +195,10 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
    vertical toma el MENOR entre la escala por ancho y la escala por alto. */
 /* velo suave detrás del texto: sin esto el bloque se vuelve ilegible cuando
    el foco de luz pasa justo por debajo */
-.hero-inner::before{
-  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+.hero::before{
+  content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
   background:linear-gradient(103deg,
-    rgba(9,13,19,.82) 0%,rgba(9,13,19,.58) 32%,rgba(9,13,19,.14) 57%,transparent 74%);
+    rgba(9,13,19,.72) 0%,rgba(9,13,19,.46) 32%,rgba(9,13,19,.10) 57%,transparent 74%);
 }
 .hero-inner{
   position:relative;z-index:2;width:100%;
@@ -207,11 +208,10 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 /* en pantalla angosta el velo diagonal no cubre: el contenido ocupa todo el
    ancho, así que se vuelve vertical y las etiquetas suben de contraste */
 @media (max-width:820px){
-  .hero-inner::before{
+  .hero::before{
     background:linear-gradient(180deg,
-      rgba(9,13,19,.88) 0%,rgba(9,13,19,.70) 42%,rgba(9,13,19,.58) 100%);
+      rgba(9,13,19,.30) 0%,rgba(9,13,19,.40) 38%,rgba(9,13,19,.66) 62%,rgba(9,13,19,.60) 100%);
   }
-  .rail dt{color:#7C8998}
 }
 @media (max-width:520px){
   .hero-inner{padding-top:92px}
@@ -270,47 +270,6 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .quiet:hover{color:var(--acero);border-bottom-color:var(--acero)}
 .quiet i{font-style:normal;transition:transform .25s}
 .quiet:hover i{transform:translateX(4px)}
-
-/* barra de datos: ficha técnica, no medidor suelto */
-.rail{
-  display:grid;grid-template-columns:repeat(4,1fr);margin:clamp(20px,3.5vh,40px) 0 0;
-  border-top:1px solid rgba(230,233,236,.16);
-}
-.rail > div{padding:16px 22px 4px 0}
-.rail > div + div{padding-left:22px;border-left:1px solid rgba(230,233,236,.13)}
-.rail dt{
-  font-family:var(--f-label);font-size:9.5px;letter-spacing:.16em;
-  text-transform:uppercase;color:#5F6C7B;margin-bottom:8px;
-}
-.rail dd{margin:0;font-size:14.5px;color:#C3CCD6;line-height:1.35}
-.rail dd.live{
-  font-family:var(--f-label);font-size:clamp(22px,2.7vw,30px);font-weight:700;
-  color:var(--sol);letter-spacing:-.02em;font-variant-numeric:tabular-nums;line-height:1;
-}
-.rail dd.live i{font-style:normal;font-size:12px;color:var(--gris-noche);letter-spacing:.08em;margin-left:3px}
-.rail small{
-  display:block;margin-top:7px;font-family:var(--f-label);font-size:9.5px;
-  letter-spacing:.09em;color:#4E5B6A;transition:opacity .6s;
-}
-/* portátil bajo: los saltos de línea de la barra técnica dejan de forzar dos
-   líneas por celda, y se oculta la pista del mouse */
-@media (max-height:820px) and (min-width:821px){
-  .rail small{display:none}
-  .rail > div{padding-top:13px}
-}
-@media (max-width:820px){
-  .rail{grid-template-columns:repeat(2,1fr);margin-top:38px}
-  .rail > div{padding-right:16px}
-  .rail > div:nth-child(odd){padding-left:0;border-left:0}
-  .rail > div:nth-child(even){padding-left:18px}
-}
-@media (max-width:520px){
-  .rail{grid-template-columns:repeat(2,1fr);margin-top:30px}
-  /* en pantalla chica el hero tiene que entrar: dejamos los dos datos que importan */
-  .rail > div:nth-child(n+3){display:none}
-  .rail dd{font-size:13.5px}
-  .rail small{display:none}
-}
 
 /* ─────────────────── SECCIONES CLARAS ─────────────────── */
 
@@ -826,21 +785,28 @@ input[type=range]::-moz-range-thumb{
 .tag{color:var(--brasa)}
 .sim-top .tag,.movil .tag{color:rgba(92,240,30,.78)}
 
-/* ── hero: datos sobre vidrio oscuro, legibles aunque pase la luz por detrás ── */
-.rail{
-  background:linear-gradient(180deg,rgba(9,13,19,.74),rgba(9,13,19,.58));
-  backdrop-filter:blur(14px) saturate(120%);-webkit-backdrop-filter:blur(14px) saturate(120%);
-  border:1px solid rgba(230,233,236,.10);border-radius:6px;
+/* ── cielo real detrás del campo de paneles ── */
+/* las filas lejanas se pierden entre el 46 y el 48 % del alto del hero (medido): ahí va el horizonte */
+.hero{--horizonte:47%}
+.cielo{position:absolute;left:0;top:0;width:100%;height:calc(var(--horizonte) + 3%);display:block}
+.cielo img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 100%}
+/* arriba se oscurece para el menú y a la izquierda para el texto; a la derecha queda el color */
+.cielo::after{
+  content:"";position:absolute;inset:0;
+  background:
+    linear-gradient(180deg,rgba(9,13,19,.42) 0%,rgba(9,13,19,.08) 30%,rgba(9,13,19,0) 55%),
+    linear-gradient(90deg,rgba(9,13,19,.34) 0%,rgba(9,13,19,.12) 40%,rgba(9,13,19,0) 68%);
 }
-.rail > div{padding:16px 22px 14px}
-.rail dt{color:#7D8A9A}
-.rail small{color:#5E6B7A}
-@media (max-width:820px){
-  .rail > div:nth-child(odd){padding-left:18px}
-  .rail > div:nth-child(n+3){border-top:1px solid rgba(230,233,236,.10)}
+/* sin la barra de datos, aire entre el texto y la cinta */
+.hero-inner{padding-bottom:clamp(40px,9vh,110px)}
+/* la segunda línea del título va en el verde de la marca; la sombra lo despega del cielo */
+.hero h1 .dim{color:var(--sol)}
+.hero h1,.hero-sub{text-shadow:0 2px 28px rgba(0,0,0,.45)}
+/* notebooks bajas (600-680 px de alto): el hero se compacta para que la cinta entre en la primera pantalla */
+@media (min-width:700px) and (max-height:680px){
+  .hero-inner{padding-top:80px;padding-bottom:24px}
+  .hero h1{font-size:clamp(34px,min(6.2vw,8.6vh),84px)}
 }
-@media (max-width:520px){.rail > div{padding:13px 14px 12px}.rail > div:nth-child(odd){padding-left:14px}}
-
 
 /* ── cinta de marcas ── */
 :root{--cinta:54px}
@@ -867,7 +833,7 @@ input[type=range]::-moz-range-thumb{
 }
 
 /* ── tipografía: la mono queda para los números; etiquetas, menú y botones en Archivo ── */
-.rail dd.live,.quick-cur,.quick-row input,.step-num,.ctrl-value,.ctrl-scale,.ro-v,
+.quick-cur,.quick-row input,.step-num,.ctrl-value,.ctrl-scale,.ro-v,
 .cover-top b,.supuestos dd,.reel-n,.lb-n,.wz-preview{font-family:var(--f-num)}
 .tag{font-size:12px;font-weight:600;letter-spacing:.16em}
 .btn{font-size:14.5px;font-weight:600;letter-spacing:.01em;text-transform:none;border-radius:999px;padding:13px 24px}
@@ -876,9 +842,9 @@ input[type=range]::-moz-range-thumb{
 .seg button{font-size:13.5px;letter-spacing:0;text-transform:none;border-radius:999px;padding:9px 16px}
 .wz-back{font-size:14px;letter-spacing:0;text-transform:none}
 .disclaimer{font-size:12.5px;letter-spacing:0}
-.rail dt,.ro-k,.reel-k,.kit-k,.lb-k,.eq-k,.donde-dl dt,.foto figcaption,.wz-step-n,
+.ro-k,.reel-k,.kit-k,.lb-k,.eq-k,.donde-dl dt,.foto figcaption,.wz-step-n,
 .wz-fields label,.foot h4,.cover-top,.ctrl-label,.step-tag,.svc-tag,.eco-lines dt{font-weight:600}
-.rail dt,.rail small,.ro-k,.reel-k,.kit-k,.eq-k,.donde-dl dt,.foto figcaption,.roof-mas,.ctrl-scale{font-size:11px}
+.ro-k,.reel-k,.kit-k,.eq-k,.donde-dl dt,.foto figcaption,.roof-mas,.ctrl-scale{font-size:11px}
 @media (max-width:520px){.nav .btn{padding:10px 16px;font-size:13px;letter-spacing:0}}
 
 /* en columnas angostas el espaciado de las etiquetas cortaba "12 V" en dos líneas */
@@ -907,6 +873,12 @@ input[type=range]::-moz-range-thumb{
 <!-- ══════════════════════════ HERO ══════════════════════════ -->
 <header class="hero" id="top">
   <div class="field" aria-hidden="true">
+    <!-- cielo real (obra propia en el campo, al atardecer): los paneles llegan hasta su horizonte -->
+    <picture class="cielo">
+      <source media="(max-width:700px)" srcset="fotos/cielo-celu.webp">
+      <img src="fotos/cielo-1600.webp" srcset="fotos/cielo-1600.webp 1600w, fotos/cielo-2400.webp 2400w"
+           sizes="100vw" alt="" fetchpriority="high" decoding="async">
+    </picture>
     <div class="field-3d" id="field3d"></div>
     <div class="glow" id="glow"></div>
     <div class="field-fog"></div>
@@ -937,25 +909,6 @@ input[type=range]::-moz-range-thumb{
 
       <a class="quiet" href="#" data-open-wz>Prefiero hablar con un asesor <i aria-hidden="true">→</i></a>
 
-      <dl class="rail">
-        <div>
-          <dt>Generando ahora</dt>
-          <dd class="live"><span id="kw">0,00</span> <i>kW</i></dd>
-          <small id="hint">movés el mouse sobre los paneles</small>
-        </div>
-        <div>
-          <dt>Desde</dt>
-          <dd>Río Tercero, Córdoba</dd>
-        </div>
-        <div>
-          <dt>Instalamos en</dt>
-          <dd>Córdoba · Buenos Aires · Santiago del Estero</dd>
-        </div>
-        <div>
-          <dt>Envíos</dt>
-          <dd>A toda la Argentina</dd>
-        </div>
-      </dl>
     </div>
   </div>
 </header>
@@ -1540,7 +1493,7 @@ const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /* ─────────── HERO: el cursor es el sol ─────────── */
 (function heroLight(){
-  const field = $('#field3d'), glow = $('#glow'), kwEl = $('#kw'), hero = $('.hero');
+  const field = $('#field3d'), glow = $('#glow'), hero = $('.hero');
   if(!field) return;
 
   const COLS = 24, ROWS = 8;
@@ -1612,7 +1565,7 @@ const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
     ];
   }
 
-  let tFila = 0, tCol = 0, pFila = 0, pCol = 0, kw = 0, hasPointer = false;
+  let tFila = 0, tCol = 0, pFila = 0, pCol = 0, hasPointer = false;
   const fine = matchMedia('(hover:hover) and (pointer:fine)').matches;
 
   function iluminar(){
@@ -1649,9 +1602,7 @@ const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
     pCol  += (tCol -pCol )*0.085;
     pintarGlow();
 
-    // lectura del instrumento: proporcional a la superficie iluminada
-    kw += ((iluminar()/cells.length)*115 - kw)*0.09;
-    kwEl.textContent = dec(kw,2);
+    iluminar();
 
     requestAnimationFrame(frame);
   }
@@ -1661,7 +1612,7 @@ const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
     [tFila,tCol] = aCampo(rect.width*0.5, rect.height*0.7);
     pFila = tFila; pCol = tCol;
     pintarGlow();
-    kwEl.textContent = dec((iluminar()/cells.length)*115, 2);
+    iluminar();
   }
 
   if(reduced) estatico(); else requestAnimationFrame(frame);
@@ -1670,10 +1621,7 @@ const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
     // si el primer movimiento llega antes del primer frame, medimos acá:
     // devolver sin hacer nada dejaba el cursor sin efecto hasta el próximo evento
     if(!rect) measure();
-    if(!hasPointer){
-      hasPointer = true;
-      const h = $('#hint'); if(h){ h.style.transition='opacity .6s'; h.style.opacity = '0'; }
-    }
+    hasPointer = true;
     [tFila,tCol] = aCampo(e.clientX - rect.left, e.clientY - rect.top);
   }, {passive:true});
 
@@ -2027,6 +1975,8 @@ $$('[data-wa-link]').forEach(a=>{
 // [archivo en fotos/obras (sin extensión), título, tipo, ancho, alto de la versión -sm]
 // para sumar una obra: exportar NN-nombre.webp (1800px) y NN-nombre-sm.webp (560px de alto) y agregar la fila
 const OBRAS = [
+  ['22-ascasubi',        '60 paneles sobre suelo · Villa Ascasubi',  'Campo',    900,506],
+  ['23-ascasubi-filas',  'Filas de paneles en el campo · Villa Ascasubi','Campo',  315,560],
   ['01-rio',             'Techo de chapa con vista al río',          'Vivienda', 747,560],
   ['02-aerea',           'Vista aérea de dos techos instalados',     'Edificio', 420,560],
   ['03-grua-comercio',   'Izaje con hidrogrúa sobre un local',       'Comercio', 420,560],
