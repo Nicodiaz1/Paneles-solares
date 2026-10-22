@@ -554,7 +554,7 @@ input[type=range]::-moz-range-thumb{
 
 /* ── servicios ── */
 .svc{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:clamp(60px,8vw,96px)}
-@media (max-width:1100px){.svc{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:1000px){.svc{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:600px){.svc{grid-template-columns:1fr;gap:10px}}
 .svc-item{
   position:relative;display:flex;flex-direction:column;gap:16px;
@@ -581,8 +581,6 @@ input[type=range]::-moz-range-thumb{
     linear-gradient(180deg,#080C12,var(--noche));
   padding:clamp(84px,12vw,140px) 0;
 }
-.close-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(28px,5vw,72px);align-items:end}
-@media (max-width:820px){.close-grid{grid-template-columns:1fr;align-items:start}}
 .close h2{font-size:clamp(32px,5.4vw,66px);max-width:17ch}
 .close-act{display:flex;flex-direction:column;align-items:flex-start;gap:26px}
 .close-act p{max-width:44ch;color:#AFBAC7;font-size:16.5px}
@@ -726,20 +724,6 @@ input[type=range]::-moz-range-thumb{
 .eco .foto{aspect-ratio:4/5;background:var(--acero-3)}
 @media (max-width:900px){.eco .foto{aspect-ratio:4/3}}
 
-.marcas{margin-top:clamp(60px,8vw,96px)}
-.eco{padding-bottom:clamp(64px,8vw,104px)}
-.marcas-list{list-style:none;margin:22px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,1fr)}
-.marcas-list li{display:flex;flex-direction:column;gap:8px;padding:28px 24px 28px 0;border-bottom:1px solid var(--acero-3)}
-.marcas-list li + li{padding-left:24px;border-left:1px solid var(--acero-3)}
-.marcas-list b{font-size:clamp(26px,3.4vw,44px);font-variation-settings:"wdth" 120,"wght" 800;letter-spacing:-.025em;line-height:1}
-.marcas-list span{font-size:14px;color:var(--gris);line-height:1.45}
-/* celular: una marca por fila, nombre a la izquierda y qué vendemos a la derecha */
-@media (max-width:640px){
-  .marcas-list{grid-template-columns:1fr}
-  .marcas-list li,.marcas-list li + li{flex-direction:row;align-items:center;justify-content:space-between;gap:16px;padding:18px 0;border-left:0}
-  .marcas-list b{font-size:26px}
-  .marcas-list span{text-align:right;max-width:58%}
-}
 
 /* ─────────────────── DÓNDE ESTAMOS ─────────────────── */
 .donde{
@@ -758,7 +742,6 @@ input[type=range]::-moz-range-thumb{
 .donde-dl a:hover{border-color:var(--sol)}
 
 /* ── equipos ── */
-.equipos{margin-top:clamp(76px,10vw,128px)}
 .eq-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 @media (max-width:900px){.eq-grid{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:520px){.eq-grid{grid-template-columns:1fr}}
@@ -853,6 +836,164 @@ input[type=range]::-moz-range-thumb{
 /* kits en una sola columna en celular */
 @media (max-width:560px){.kits{grid-template-columns:1fr}}
 .foot-logo{display:block;width:220px;height:auto}
+
+/* ═══════════════════ PANTALLAS ═══════════════════
+   Cada sección entra entera en la pantalla (descontando el menú fijo) y se monta
+   sobre la anterior como una hoja con las esquinas de arriba redondeadas. */
+:root{--nav:78px;--hoja:clamp(22px,3vw,44px);--aire:clamp(26px,5vh,72px)}
+@media (max-width:520px){:root{--nav:64px}}
+.pantalla{
+  position:relative;display:flex;flex-direction:column;justify-content:center;
+  /* la parte de abajo (--hoja) queda tapada por la sección siguiente */
+  min-height:calc(100svh - var(--nav) + var(--hoja));
+  padding:var(--aire) 0 calc(var(--aire) + var(--hoja));
+  margin-top:calc(-1 * var(--hoja));
+  border-radius:var(--hoja) var(--hoja) 0 0;
+}
+#recorrido{margin-top:0}  /* la primera sale de debajo de la cinta */
+.pantalla.light{background:var(--acero);color:var(--tinta)}
+.pantalla.oscuro{background:linear-gradient(180deg,var(--noche-2) 0%,var(--noche) 70%);color:var(--acero)}
+.pantalla.oscuro.close{
+  background:
+    radial-gradient(90% 130% at 50% 118%,rgba(70,200,20,.22),transparent 62%),
+    linear-gradient(180deg,var(--noche-2),var(--noche));
+}
+.foot{position:relative;margin-top:calc(-1 * var(--hoja));border-radius:var(--hoja) var(--hoja) 0 0}
+
+/* con mouse en pantallas anchas, la rueda acomoda cada sección justo debajo del menú */
+@media (min-width:821px) and (min-height:600px){
+  html{scroll-snap-type:y proximity;scroll-padding-top:var(--nav)}
+  .hero,.pantalla{scroll-snap-align:start}
+}
+
+/* encabezados más compactos: el título y el contenido tienen que entrar juntos */
+.sec-head{margin-bottom:clamp(18px,4vh,56px)}
+.sec-head h2,.movil h2,.eco h2,.close h2{font-size:clamp(28px,min(5vw,7.2vh),60px)}
+.oscuro .tag{color:rgba(92,240,30,.78)}
+.oscuro .sec-head p{color:var(--gris-noche)}
+
+/* ── Cómo funciona: título a la izquierda, pasos a la derecha ── */
+#recorrido .wrap{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(32px,5vw,80px);align-items:center}
+#recorrido .sec-head{display:flex;flex-direction:column;align-items:flex-start;gap:18px;margin:0}
+#recorrido .sec-head h2{max-width:12ch}
+.step-btn{grid-template-columns:44px 104px 1fr 28px;gap:14px;padding:clamp(11px,1.9vh,20px) 4px}
+.step-title{font-size:clamp(16px,min(1.7vw,2.7vh),22px)}
+.step-detail{padding:0 28px clamp(12px,2.2vh,24px) 62px;font-size:15.5px;line-height:1.6}
+.step-note{margin-top:10px}
+@media (max-width:900px){#recorrido .wrap{grid-template-columns:1fr}}
+@media (max-width:740px){
+  .step-btn{grid-template-columns:40px 1fr 26px;gap:12px}
+  .step-detail{padding:0 0 18px 52px}
+}
+
+/* ── Estimador: a todo el ancho, sin tarjeta ── */
+.sim{max-width:none;background:none;box-shadow:none;border-radius:0;overflow:visible}
+.sim-top{padding:0 0 clamp(14px,2.8vh,28px)}
+.sim-top h2{max-width:24ch;font-size:clamp(26px,min(3.6vw,6vh),46px)}
+.sim-controls{padding:clamp(16px,3vh,36px) clamp(20px,3vw,44px) clamp(16px,3vh,36px) 0;gap:clamp(14px,2.8vh,30px)}
+.sim-out{padding:clamp(16px,3vh,36px) 0 clamp(16px,3vh,36px) clamp(20px,3vw,44px);gap:clamp(12px,2.4vh,24px)}
+@media (max-width:900px){
+  .sim-controls{padding-right:0}
+  .sim-out{padding-left:0}
+}
+.ctrl-label{margin-bottom:clamp(8px,1.6vh,16px)}
+.seg button{padding:8px 14px}
+.roof{width:min(250px,62%);margin:0 auto}
+.ro{padding:clamp(10px,1.8vh,17px) 16px}
+.ro.hero-ro .ro-v{font-size:clamp(28px,min(4vw,6vh),44px)}
+/* en pantallas bajas sale el dibujo del techo: es lo único decorativo del estimador */
+@media (min-width:901px) and (max-height:940px){.roof,.roof-mas{display:none}}
+.sim-foot{padding:clamp(12px,2.2vh,22px) 0 0;border-top:1px solid rgba(230,233,236,.11);row-gap:12px}
+.supuestos{
+  display:flex;flex-wrap:wrap;gap:6px 26px;width:100%;margin:0;padding:0;border:0;
+  font-family:var(--f-label);font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+}
+.supuestos > div{display:flex;gap:8px;align-items:baseline}
+.supuestos dt{color:#5F6B7A}
+.supuestos dd{margin:0;color:var(--gris-noche);font-family:var(--f-num);letter-spacing:0;text-transform:none}
+
+/* ── Obras: el carrete se achica en pantallas bajas ── */
+.reel{--rh:clamp(210px,min(34vw,44vh),440px)}
+
+/* ── Servicios sobre fondo oscuro ── */
+#servicios .svc{margin-top:0}
+.oscuro .svc-item{background:rgba(230,233,236,.035);border-color:rgba(230,233,236,.10)}
+.oscuro .svc-item:hover{border-color:rgba(92,240,30,.45);box-shadow:none}
+.oscuro .svc-item h3{color:var(--acero)}
+.oscuro .svc-item p{color:var(--gris-noche)}
+.oscuro .svc-ico{background:rgba(92,240,30,.12);color:var(--sol)}
+.oscuro .svc-tag{color:#4F5B69}
+
+/* ── Equipos: los seis en una fila ── */
+#equipos .eq-grid{grid-template-columns:repeat(6,1fr);gap:12px}
+@media (max-width:1100px){#equipos .eq-grid{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:600px){#equipos .eq-grid{grid-template-columns:repeat(2,1fr)}}
+.eq{padding:14px 14px 18px}
+.eq-img{height:clamp(110px,18vh,170px);margin-bottom:14px}
+.eq h3{font-size:16.5px}
+.eq p{font-size:13.5px}
+
+/* ── Carros y kits ── */
+.movil .foto{aspect-ratio:auto;height:min(55vh,480px)}
+.movil h2{margin:clamp(10px,2vh,18px) 0 clamp(10px,2vh,16px)}
+.kits{margin:clamp(14px,3vh,30px) 0 clamp(14px,3vh,28px)}
+@media (max-width:900px){.movil .foto{height:auto;aspect-ratio:5/4}}
+
+/* ── EcoFlow ── */
+.eco h2{max-width:22ch;margin:clamp(10px,2vh,18px) 0 clamp(10px,2vh,16px)}
+.eco-lines{margin:clamp(12px,2.6vh,30px) 0}
+.eco-lines > div{padding:clamp(6px,1.3vh,14px) 0}
+.eco .foto{aspect-ratio:auto;height:min(62vh,560px)}
+@media (max-width:900px){.eco .foto{height:auto;aspect-ratio:4/3}}
+
+/* ── Contacto: texto y botón a la izquierda, datos a la derecha ── */
+.contacto-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,5vw,80px);align-items:center}
+@media (max-width:860px){.contacto-grid{grid-template-columns:1fr}}
+.close-act{gap:clamp(14px,2.4vh,24px)}
+.close h2{max-width:16ch}
+.donde{display:flex;flex-direction:column;align-items:stretch;gap:clamp(12px,2.2vh,22px);margin:0;padding:0;border:0}
+.donde .foto{aspect-ratio:auto;height:clamp(140px,26vh,280px)}
+.donde-dl > div{padding:clamp(8px,1.5vh,16px) 0}
+
+/* ── ajustes finos para que cada pantalla entre en notebooks de 620 a 760 px de alto ── */
+.step-btn{padding:clamp(9px,1.6vh,20px) 4px}
+.step-detail{font-size:15px;padding-bottom:clamp(10px,1.8vh,22px)}
+
+.roof{width:min(220px,52%)}
+.disclaimer{max-width:96ch}
+
+.svc{gap:12px}
+.svc-item{gap:12px;padding:clamp(14px,2.2vh,22px) 18px clamp(16px,2.4vh,24px)}
+.svc-ico{width:38px;height:38px}
+.svc-ico svg{width:20px;height:20px}
+.svc-tag{top:16px;right:16px}
+.svc-item h3{font-size:17px}
+.svc-item p{font-size:13.5px;line-height:1.5}
+
+/* las cinco líneas de EcoFlow en dos columnas */
+.eco-lines{display:grid;grid-template-columns:1fr 1fr;column-gap:28px;border-top:0}
+.eco-lines > div{display:flex;flex-direction:column;gap:4px;border-bottom:1px solid var(--acero-3)}
+.eco-lines dd{font-size:14.5px}
+@media (max-width:520px){.eco-lines{grid-template-columns:1fr}}
+.eco h2{font-size:clamp(26px,min(3.6vw,6vh),48px)}
+.eco-lines dd{font-size:13.5px;line-height:1.4}
+
+.sec-title-block{gap:clamp(8px,1.8vh,18px)}
+/* notebooks bajas: en servicios el ícono va al lado del título y no arriba */
+@media (min-width:601px) and (max-height:700px){
+  .svc-item{display:grid;grid-template-columns:38px 1fr;column-gap:14px;align-items:start}
+  .svc-tag{display:none}
+  .sim-controls{gap:12px}
+  .seg button{padding:7px 13px}
+  .sim-top p{display:none}
+  .sim-top{padding-bottom:10px}
+  .ro{padding:8px 14px}
+}
+/* pantallas de 901 a 1100 px de ancho: menos columnas, así que todo se compacta en alto */
+@media (min-width:901px) and (max-width:1100px){
+  .roof,.roof-mas,.sim-top p{display:none}
+  #equipos .eq-img{height:clamp(80px,12vh,120px)}
+}
 </style>
 
 <!-- ══════════════════════════ NAV ══════════════════════════ -->
@@ -927,7 +1068,7 @@ input[type=range]::-moz-range-thumb{
 </div>
 
 <!-- ═══════════════════ RECORRIDO DE UN KILOVATIO ═══════════════════ -->
-<section class="light sec" id="recorrido">
+<section class="pantalla light" id="recorrido">
   <div class="wrap">
     <div class="sec-head rv">
       <div class="sec-title-block">
@@ -1037,7 +1178,7 @@ input[type=range]::-moz-range-thumb{
 </section>
 
 <!-- ══════════════════════ SIMULADOR ══════════════════════ -->
-<section class="sim-shell" id="simulador">
+<section class="pantalla oscuro sim-shell" id="simulador">
   <div class="wrap">
     <div class="sim rv">
       <div class="sim-top">
@@ -1082,15 +1223,6 @@ input[type=range]::-moz-range-thumb{
             </div>
           </div>
 
-          <div class="supuestos">
-            <dl>
-              <dt>Precio del kWh usado</dt><dd id="sPrecio">—</dd>
-              <dt>Horas de sol pico</dt><dd id="sHsp">—</dd>
-              <dt>Potencia por panel</dt><dd>660 W</dd>
-              <dt>Rendimiento del sistema</dt><dd>78 %</dd>
-              <dt>Ahorro sobre la factura</dt><dd>hasta 50 %</dd>
-            </dl>
-          </div>
         </div>
 
         <div class="sim-out">
@@ -1128,6 +1260,13 @@ input[type=range]::-moz-range-thumb{
       </div>
 
       <div class="sim-foot">
+        <dl class="supuestos">
+          <div><dt>Precio del kWh</dt><dd id="sPrecio">—</dd></div>
+          <div><dt>Horas de sol pico</dt><dd id="sHsp">—</dd></div>
+          <div><dt>Potencia por panel</dt><dd>660 W</dd></div>
+          <div><dt>Rendimiento</dt><dd>78 %</dd></div>
+          <div><dt>Ahorro sobre la factura</dt><dd>hasta 50 %</dd></div>
+        </dl>
         <p class="disclaimer">
           Estimación orientativa sobre valores promedio de mercado. No incluye precio del equipo:
           eso depende del techo, la distancia al tablero y la marca del inversor. La propuesta exacta
@@ -1140,7 +1279,7 @@ input[type=range]::-moz-range-thumb{
 </section>
 
 <!-- ══════════════════════ OBRAS ══════════════════════ -->
-<section class="light sec" id="obras" style="padding-top:0">
+<section class="pantalla light" id="obras">
   <div class="wrap">
     <div class="sec-head rv">
       <div class="sec-title-block">
@@ -1161,10 +1300,19 @@ input[type=range]::-moz-range-thumb{
       <span class="reel-n" id="reelN"></span>
     </div>
   </div>
+</section>
 
+<!-- ══════════════════════ SERVICIOS ══════════════════════ -->
+<section class="pantalla oscuro" id="servicios">
   <div class="wrap">
-    <!-- ── servicios ── -->
-    <div class="svc rv" id="servicios">
+    <div class="sec-head rv">
+      <div class="sec-title-block">
+        <span class="tag">Servicios</span>
+        <h2>Qué hacemos</h2>
+      </div>
+      <p>Paneles, inversores, baterías y el trámite de conexión, para casas, campos e industrias.</p>
+    </div>
+    <div class="svc rv">
       <div class="svc-item">
         <span class="svc-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v10h13V10"/><path d="M10 20v-5h4v5"/></svg></span>
         <span class="svc-tag">01</span>
@@ -1230,9 +1378,12 @@ input[type=range]::-moz-range-thumb{
         </div>
       </div>
     </div>
+  </div>
+</section>
 
-    <!-- ── equipos (fotos de producto del proveedor, ISECOM) ── -->
-    <div class="equipos" id="equipos">
+<!-- ══════════════════════ EQUIPOS (fotos de producto del proveedor, ISECOM) ══════════════════════ -->
+<section class="pantalla light" id="equipos">
+  <div class="wrap">
       <div class="sec-head rv">
         <div class="sec-title-block">
           <span class="tag">Equipos</span>
@@ -1278,12 +1429,11 @@ input[type=range]::-moz-range-thumb{
           <p>Monocristalinos de 580 a 710 W, para techo de chapa, teja, losa o estructura sobre suelo.</p>
         </article>
       </div>
-    </div>
   </div>
 </section>
 
 <!-- ══════════════════════ MÓVIL ══════════════════════ -->
-<section class="movil" id="movil">
+<section class="pantalla oscuro movil" id="movil">
   <div class="wrap movil-grid">
     <figure class="foto rv">
       <img src="fotos/obras/07-carro-solar.webp" alt="Carro con cuatro paneles solares montados sobre un trailer verde" loading="lazy" decoding="async" width="1800" height="1435">
@@ -1316,13 +1466,13 @@ input[type=range]::-moz-range-thumb{
 </section>
 
 <!-- ══════════════════════ ECOFLOW + MARCAS ══════════════════════ -->
-<section class="light sec eco" id="productos">
+<section class="pantalla light eco" id="productos">
   <div class="wrap">
     <div class="eco-grid">
       <div class="rv">
         <span class="tag">Representantes EcoFlow</span>
-        <h2>Energía portátil EcoFlow, con asesoramiento cerca</h2>
-        <p class="eco-lead">Estaciones de energía, paneles plegables, heladeras y aires portátiles. Para cortes de luz, el campo, la casilla o el fin de semana.</p>
+        <h2>Energía portátil EcoFlow</h2>
+        <p class="eco-lead">Somos representantes, con asesoramiento cerca. Estaciones de energía, paneles plegables, heladeras y aires portátiles para cortes de luz, el campo o la casilla.</p>
         <dl class="eco-lines">
           <div><dt>Serie RIVER</dt><dd>De 245 a 858 Wh · desde 3,5 kg · carga en 1 hora</dd></div>
           <div><dt>Serie DELTA</dt><dd>De 1.024 a 4.096 Wh · hasta 7.200 W de pico</dd></div>
@@ -1341,29 +1491,20 @@ input[type=range]::-moz-range-thumb{
       </figure>
     </div>
 
-    <div class="marcas rv">
-      <span class="tag">Marcas con las que trabajamos</span>
-      <ul class="marcas-list">
-        <li><b>EcoFlow</b><span>Representantes · energía portátil</span></li>
-        <li><b>Growatt</b><span>Inversores y baterías de litio</span></li>
-        <li><b>GoodWe</b><span>Inversores on-grid, off-grid, híbridos y de bombeo</span></li>
-      </ul>
-    </div>
   </div>
 </section>
 
 <!-- ══════════════════════ CIERRE + CONTACTO ══════════════════════ -->
-<section class="close" id="contacto">
-  <div class="wrap">
-    <div class="close-grid">
+<section class="pantalla oscuro close" id="contacto">
+  <div class="wrap contacto-grid">
+    <div class="close-act rv">
+      <span class="tag">Contacto</span>
       <h2>Contanos tu caso y te decimos qué te conviene</h2>
-      <div class="close-act">
-        <p>
-          Siete preguntas, menos de un minuto. Con eso armamos el mensaje y seguís por WhatsApp
-          con un asesor, no con un bot. El asesoramiento no tiene cargo.
-        </p>
-        <button class="btn btn-sol" data-open-wz>Empezar la consulta</button>
-      </div>
+      <p>
+        Siete preguntas, menos de un minuto. Con eso armamos el mensaje y seguís por WhatsApp
+        con un asesor, no con un bot. El asesoramiento no tiene cargo.
+      </p>
+      <button class="btn btn-sol" data-open-wz>Empezar la consulta</button>
     </div>
 
     <div class="donde">
