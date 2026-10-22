@@ -853,7 +853,7 @@ input[type=range]::-moz-range-thumb{
         <div class="quick-row">
           <span class="quick-cur" aria-hidden="true">$</span>
           <input id="qFactura" type="text" inputmode="numeric" autocomplete="off"
-                 value="85.000" aria-label="Tu factura de luz mensual, en pesos">
+                 value="150.000" aria-label="Tu factura de luz mensual, en pesos">
           <button class="quick-go" type="submit" aria-label="Ver cuánto ahorrarías">
             <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"
                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -904,12 +904,13 @@ input[type=range]::-moz-range-thumb{
         <button class="step-btn" aria-expanded="true">
           <span class="step-num">01</span>
           <span class="step-tag">Recurso</span>
-          <span class="step-title">Sobre tu techo caen 4 a 6 horas de sol pleno por día</span>
+          <span class="step-title">Sobre tu techo caen de 6 a 10 horas de sol por día</span>
           <span class="step-plus" aria-hidden="true"></span>
         </button>
         <div class="step-body"><div><div class="step-detail">
-          Es el dato que define todo lo demás: las <strong>horas de sol pico</strong> de tu zona.
-          En el norte argentino rondan las 5,5 diarias; en la región pampeana, 4,4; en Patagonia, 4.
+          Según la época del año, sobre tu techo caen entre 6 y 10 horas de sol.
+          Para dimensionar usamos un dato más exigente: las <strong>horas de sol pico</strong>, el equivalente
+          a sol pleno. En el centro del país rondan las 4,7 diarias; en el norte, 5,6; en Patagonia, 4.
           Esa energía ya está llegando a tu propiedad todos los días — el sistema solo la aprovecha.
           <span class="step-note">Medimos la orientación y la sombra antes de cotizar</span>
         </div></div></div>
@@ -934,10 +935,12 @@ input[type=range]::-moz-range-thumb{
         <button class="step-btn" aria-expanded="false">
           <span class="step-num">03</span>
           <span class="step-tag">Conversión</span>
-          <span class="step-title">El inversor la transforma en los 220 V que usa tu casa</span>
+          <span class="step-title">El inversor la transforma en los 220 o 380 V que usás</span>
           <span class="step-plus" aria-hidden="true"></span>
         </button>
         <div class="step-body"><div><div class="step-detail">
+          Si tu instalación es <strong>monofásica</strong> entrega 220 V; si es <strong>trifásica</strong>, 380 V.
+          Por eso una de las primeras cosas que preguntamos es qué corriente tenés.
           Es el cerebro del sistema y donde más se nota la diferencia entre un equipo serio y uno barato:
           define cuánta energía se aprovecha realmente, cómo se protege la instalación y si vas a poder
           <strong>monitorear la generación desde el celular</strong>. Es la pieza que más preguntas genera y sobre la
@@ -986,8 +989,8 @@ input[type=range]::-moz-range-thumb{
         </button>
         <div class="step-body"><div><div class="step-detail">
           Ese es el balance neto: consumo menos generación. En instalaciones bien dimensionadas la factura
-          baja <strong>entre un 70% y un 90%</strong> —nunca al 0%, porque los cargos fijos y los impuestos
-          se siguen pagando. Preferimos decirlo antes y no después.
+          baja <strong>cerca de la mitad</strong> —nunca al 0%, porque los cargos fijos, los impuestos y lo que
+          consumís de noche se siguen pagando. Preferimos decirlo antes y no después.
           <span class="step-note">Sin promesas de factura cero</span>
         </div></div></div>
       </div>
@@ -1012,11 +1015,11 @@ input[type=range]::-moz-range-thumb{
           <div>
             <div class="ctrl-label">
               <span>Lo que pagás de luz por mes</span>
-              <span class="ctrl-value" id="vFactura">$85.000</span>
+              <span class="ctrl-value" id="vFactura">$150.000</span>
             </div>
-            <input type="range" id="factura" min="15000" max="900000" step="5000" value="85000"
+            <input type="range" id="factura" min="20000" max="1500000" step="10000" value="150000"
                    aria-label="Factura mensual de luz en pesos">
-            <div class="ctrl-scale"><span>$15.000</span><span>$900.000</span></div>
+            <div class="ctrl-scale"><span>$20.000</span><span>$1.500.000</span></div>
           </div>
 
           <div>
@@ -1035,8 +1038,9 @@ input[type=range]::-moz-range-thumb{
             <div class="ctrl-label"><span>Qué querés alimentar</span></div>
             <div class="seg" id="segTipo">
               <button aria-pressed="true"  data-v="casa">Casa</button>
-              <button aria-pressed="false" data-v="comercio">Comercio</button>
-              <button aria-pressed="false" data-v="campo">Campo o industria</button>
+              <button aria-pressed="false" data-v="comercio">Comercio u oficina</button>
+              <button aria-pressed="false" data-v="industria">Industria</button>
+              <button aria-pressed="false" data-v="campo">Campo</button>
             </div>
           </div>
 
@@ -1046,6 +1050,7 @@ input[type=range]::-moz-range-thumb{
               <dt>Horas de sol pico</dt><dd id="sHsp">—</dd>
               <dt>Potencia por panel</dt><dd>660 W</dd>
               <dt>Rendimiento del sistema</dt><dd>78 %</dd>
+              <dt>Ahorro sobre la factura</dt><dd>hasta 50 %</dd>
             </dl>
           </div>
         </div>
@@ -1139,33 +1144,40 @@ input[type=range]::-moz-range-thumb{
       <div class="svc-item">
         <span class="svc-tag">03</span>
         <div>
+          <h3>Industrias y galpones</h3>
+          <p>Equipos trifásicos sobre cubiertas grandes. El consumo de día es el que mejor amortiza la inversión.</p>
+        </div>
+      </div>
+      <div class="svc-item">
+        <span class="svc-tag">04</span>
+        <div>
           <h3>Inversores on-grid, off-grid e híbridos</h3>
           <p>Trabajamos con Growatt y GoodWe. Te asesoramos sobre cuál conviene según tu instalación.</p>
         </div>
       </div>
       <div class="svc-item">
-        <span class="svc-tag">04</span>
+        <span class="svc-tag">05</span>
         <div>
           <h3>Baterías de litio</h3>
           <p>Baterías Growatt para guardar la energía que generás y tener respaldo cuando se corta la luz.</p>
         </div>
       </div>
       <div class="svc-item">
-        <span class="svc-tag">05</span>
+        <span class="svc-tag">06</span>
         <div>
           <h3>Carros de energía fotovoltaica</h3>
           <p>Paneles montados sobre trailer para llevar la energía de un lote a otro, a la obra o al puesto.</p>
         </div>
       </div>
       <div class="svc-item">
-        <span class="svc-tag">06</span>
+        <span class="svc-tag">07</span>
         <div>
           <h3>Trámite de conexión a la red</h3>
           <p>Gestionamos la solicitud ante la distribuidora y el medidor bidireccional, para que el excedente vuelva como crédito en tu factura.</p>
         </div>
       </div>
       <div class="svc-item">
-        <span class="svc-tag">07</span>
+        <span class="svc-tag">08</span>
         <div>
           <h3>Envíos a todo el país</h3>
           <p>Si estás fuera de nuestra zona de instalación, te enviamos los equipos a cualquier punto de la Argentina.</p>
@@ -1421,8 +1433,9 @@ const CONFIG = {
 
   // horas de sol pico promedio por zona
   hsp: { noa:5.6, cuyo:5.4, centro:4.7, litoral:4.5, bsas:4.4, patagonia:4.0 },
-  // tope de cobertura de factura: siempre quedan cargos fijos e impuestos
-  tope:{ casa:0.88, comercio:0.93, campo:0.90 }
+  // Cuánto de la factura llega a bajar un equipo que cubre todo el consumo: alrededor
+  // de la mitad. El resto son cargos fijos, impuestos y el consumo nocturno.
+  tope: 0.50
 };
 
 const $  = (s,c=document)=>c.querySelector(s);
@@ -1606,7 +1619,7 @@ $$('#steps .step-btn').forEach(btn=>{
 });
 
 /* ─────────── SIMULADOR ─────────── */
-const sim = { factura:85000, zona:'centro', tipo:'casa', out:null };
+const sim = { factura:150000, zona:'centro', tipo:'casa', out:null };
 
 function segInit(id, key){
   const box = $(id);
@@ -1676,7 +1689,7 @@ function calcular(){
   const kwp     = paneles * CONFIG.potenciaPanel / 1000;
   const genMes  = kwp * hsp * 30 * CONFIG.performanceRatio;
   const cober   = Math.min(genMes / kwhMes, 1);
-  const ahorro  = sim.factura * Math.min(cober, CONFIG.tope[sim.tipo]);
+  const ahorro  = sim.factura * cober * CONFIG.tope;
   const co2     = genMes * 12 * CONFIG.co2PorKwh / 1000;
 
   tick($('#rAhorro'), ahorro, v => money(v));
@@ -1685,7 +1698,7 @@ function calcular(){
   tick($('#rKwh'),    genMes, v => nf.format(Math.round(v)) + '<small>kWh</small>');
   tick($('#rCo2'),    co2,    v => dec(v,1) + '<small>t</small>');
 
-  const pct = Math.round(Math.min(cober, CONFIG.tope[sim.tipo]) * 100);
+  const pct = Math.round(cober * 100);   // cobertura de energía, no de plata
   $('#rCob').textContent = pct + '%';
   $('#rBar').style.width = pct + '%';
 
@@ -1701,7 +1714,7 @@ calcular();
 /* ─────────── campo del hero → simulador ─────────── */
 (function quick(){
   const form = $('#quick'), inp = $('#qFactura');
-  const MIN = 15000, MAX = 900000;
+  const MIN = 20000, MAX = 1500000;
   const soloDigitos = v => v.replace(/\D/g,'').slice(0,7);
 
   inp.addEventListener('input', ()=>{
@@ -1727,18 +1740,20 @@ calcular();
 /* ─────────── WIZARD → WhatsApp ─────────── */
 const ETIQ = {
   zona:{noa:'NOA',cuyo:'Cuyo',centro:'Centro del país',litoral:'Litoral',bsas:'Buenos Aires',patagonia:'Patagonia'},
-  tipo:{casa:'Casa / vivienda',comercio:'Comercio u oficina',campo:'Campo o industria'}
+  tipo:{casa:'Casa / vivienda',comercio:'Comercio u oficina',industria:'Industria o galpón',campo:'Campo'}
 };
 
 const PASOS = [
   { k:'objetivo', q:'¿Qué querés resolver?', help:'Con esto sabemos por dónde empezar la charla.',
-    opts:['Bajar la factura de mi casa','Un comercio, oficina o edificio','Un campo o lugar sin red eléctrica','Casilla, motorhome o carro solar','Equipos EcoFlow (energía portátil)','Todavía no sé — quiero que me asesoren'] },
+    opts:['Bajar la factura de mi casa','Un comercio, oficina o edificio','Una industria o galpón','Un campo o lugar sin red eléctrica','Casilla, motorhome o carro solar','Equipos EcoFlow (energía portátil)','Todavía no sé — quiero que me asesoren'] },
   { k:'factura', q:'¿Cuánto pagás de luz por mes?', help:'Aunque sea aproximado. Es el dato que más define el equipo.',
-    opts:['Menos de $40.000','Entre $40.000 y $100.000','Entre $100.000 y $250.000','Más de $250.000','No tengo el dato a mano'] },
+    opts:['Menos de $100.000','Entre $100.000 y $300.000','Entre $300.000 y $700.000','Más de $700.000','No tengo el dato a mano'] },
   { k:'lugar', q:'¿Dónde está la propiedad?', help:'Localidad y provincia. Instalamos en Córdoba, Buenos Aires y Santiago del Estero; al resto del país enviamos equipos.',
     field:{ph:'Ej: Río Tercero, Córdoba', label:'Localidad y provincia'} },
   { k:'techo', q:'¿Cómo es el techo?', help:'Define la estructura de montaje y el costo de instalación.',
     opts:['Chapa','Teja','Losa o platea','Suelo, parral o estructura aparte','No sé / lo vemos juntos'] },
+  { k:'corriente', q:'¿Qué corriente tenés?', help:'Monofásica son 220 V; trifásica, 380 V. Lo dice tu factura, y si no sabés lo vemos nosotros.',
+    opts:['Monofásica · 220 V','Trifásica · 380 V','No sé / lo vemos juntos'] },
   { k:'plazo', q:'¿Para cuándo lo estás pensando?', help:'Sin compromiso — es para saber cómo ordenarnos.',
     opts:['Lo antes posible','En los próximos 3 meses','Este año','Estoy averiguando nomás'] },
   { k:'datos', q:'¿Cómo te llamás?', help:'Para que el asesor te responda por tu nombre. El teléfono es opcional: si escribís por WhatsApp ya nos llega.',
@@ -1750,10 +1765,10 @@ const wzEl = $('#wz');
 
 // los tramos del wizard y el slider del simulador tienen que contar lo mismo
 const TRAMOS = [
-  {txt:'Menos de $40.000',            desde:0,      hasta:40000,   v:30000},
-  {txt:'Entre $40.000 y $100.000',    desde:40000,  hasta:100000,  v:70000},
-  {txt:'Entre $100.000 y $250.000',   desde:100000, hasta:250000,  v:170000},
-  {txt:'Más de $250.000',             desde:250000, hasta:Infinity,v:400000},
+  {txt:'Menos de $100.000',           desde:0,      hasta:100000,  v:70000},
+  {txt:'Entre $100.000 y $300.000',   desde:100000, hasta:300000,  v:200000},
+  {txt:'Entre $300.000 y $700.000',   desde:300000, hasta:700000,  v:500000},
+  {txt:'Más de $700.000',             desde:700000, hasta:Infinity,v:1000000},
   {txt:'No tengo el dato a mano',     desde:null,   hasta:null,    v:null}
 ];
 const tramoDe = monto => (TRAMOS.find(t => t.desde !== null && monto >= t.desde && monto < t.hasta) || TRAMOS[3]).txt;
@@ -1776,6 +1791,7 @@ function armarMensaje(){
   if(d.lugar)    L.push('• Ubicación: ' + d.lugar);
   if(d.factura)  L.push('• Factura de luz: ' + d.factura);
   if(d.techo)    L.push('• Techo: ' + d.techo);
+  if(d.corriente) L.push('• Corriente: ' + d.corriente);
   if(d.plazo)    L.push('• Plazo: ' + d.plazo);
   L.push('');
   L.push('Simulé en la web (' + ETIQ.zona[sim.zona] + ', ' + ETIQ.tipo[sim.tipo] + '):');
