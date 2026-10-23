@@ -439,10 +439,8 @@ input[type=range]::-moz-range-thumb{
 .ro.hero-ro .ro-v{color:var(--sol);font-size:clamp(30px,4.6vw,44px)}
 
 .cover{display:flex;flex-direction:column;gap:9px}
-.cover-top{display:flex;justify-content:space-between;font-family:var(--f-label);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--gris-noche)}
-.cover-top b{color:var(--sol);font-weight:700}
-.cover-bar{height:5px;background:rgba(230,233,236,.12);border-radius:3px;overflow:hidden}
-.cover-fill{display:block;height:100%;width:0;border-radius:3px;background:linear-gradient(90deg,var(--brasa),var(--sol));transition:width .55s cubic-bezier(.2,.85,.25,1)}
+.cover-top{display:flex;justify-content:space-between;align-items:baseline;font-family:var(--f-label);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--gris-noche)}
+.cover-top b{color:var(--sol);font-weight:700;font-size:14px;letter-spacing:.02em;text-transform:none}
 
 .sim-foot{
   display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px;
@@ -1266,8 +1264,7 @@ input[type=range]::-moz-range-thumb{
           </div>
 
           <div class="cover">
-            <div class="cover-top"><span>Cobertura de tu consumo</span><b id="rCob">0%</b></div>
-            <div class="cover-bar"><i class="cover-fill" id="rBar"></i></div>
+            <div class="cover-top"><span>Techo que ocupan los paneles</span><b id="rM2">0 m²</b></div>
           </div>
         </div>
       </div>
@@ -1630,6 +1627,7 @@ const CONFIG = {
   potenciaPanel: 660,    // W por panel — instalan de 580 a 710 W, se toma un valor medio
   performanceRatio: 0.78,// pérdidas del sistema
   co2PorKwh: 0.35,       // kg CO2 por kWh de red
+  m2Panel: 3.1,          // m² por panel — uno de 660 W mide unos 2,38 x 1,30 m
 
   // horas de sol pico promedio por zona
   hsp: { noa:5.6, cuyo:5.4, centro:4.7, litoral:4.5, bsas:4.4, patagonia:4.0 },
@@ -1903,11 +1901,11 @@ function calcular(){
   const hsp = CONFIG.hsp[sim.zona];
   const kwhMes  = sim.factura / CONFIG.precioKwh;
   const kwpIdeal = kwhMes / (hsp * 30 * CONFIG.performanceRatio);
-  const paneles = Math.max(2, Math.round(kwpIdeal * 1000 / CONFIG.potenciaPanel));
+  // se redondea para arriba: el equipo cubre todo el consumo, nunca queda corto
+  const paneles = Math.max(2, Math.ceil(kwpIdeal * 1000 / CONFIG.potenciaPanel));
   const kwp     = paneles * CONFIG.potenciaPanel / 1000;
   const genMes  = kwp * hsp * 30 * CONFIG.performanceRatio;
-  const cober   = Math.min(genMes / kwhMes, 1);
-  const ahorro  = sim.factura * cober * CONFIG.tope;
+  const ahorro  = sim.factura * CONFIG.tope;
   const co2     = genMes * 12 * CONFIG.co2PorKwh / 1000;
 
   tick($('#rAhorro'), ahorro, v => money(v));
@@ -1916,15 +1914,15 @@ function calcular(){
   tick($('#rKwh'),    genMes, v => nf.format(Math.round(v)) + '<small>kWh</small>');
   tick($('#rCo2'),    co2,    v => dec(v,1) + '<small>t</small>');
 
-  const pct = Math.round(cober * 100);   // cobertura de energía, no de plata
-  $('#rCob').textContent = pct + '%';
-  $('#rBar').style.width = pct + '%';
+  // como siempre cubre todo el consumo, lo que cambia con la factura es cuánto techo hace falta
+  const m2 = paneles * CONFIG.m2Panel;
+  tick($('#rM2'), m2, v => '≈ ' + nf.format(Math.round(v)) + ' m²');
 
   $('#sPrecio').textContent = '$' + nf.format(CONFIG.precioKwh);
   $('#sHsp').textContent = dec(hsp,1) + ' h';
 
   renderRoof(paneles);
-  sim.out = {kwp, paneles, ahorro, genMes, pct};
+  sim.out = {kwp, paneles, ahorro, genMes, m2};
 }
 $('#vFactura').textContent = money(sim.factura);
 calcular();
@@ -2020,7 +2018,7 @@ function armarMensaje(){
   L.push('');
   L.push('Simulé en la web (' + ETIQ.zona[sim.zona] + ', ' + ETIQ.tipo[sim.tipo] + '):');
   L.push('• Sistema sugerido: ' + dec(o.kwp,1) + ' kWp — ' + o.paneles + ' paneles');
-  L.push('• Genera ~' + nf.format(Math.round(o.genMes)) + ' kWh/mes (' + o.pct + '% de mi consumo)');
+  L.push('• Genera ~' + nf.format(Math.round(o.genMes)) + ' kWh/mes y ocupa ~' + nf.format(Math.round(o.m2)) + ' m² de techo');
   L.push('• Ahorro estimado: ' + money(o.ahorro) + ' por mes');
   L.push('');
   if(d.nombre) L.push('Soy ' + d.nombre + (d.tel ? ' — tel: ' + d.tel : '') + '.');
